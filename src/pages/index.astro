@@ -1,17 +1,510 @@
 ---
-
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="altmaian.dev">
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="glitch-text">
+            <span class="line">Hei, olen</span>
+            <span class="line highlight">Design Engineer</span>
+          </h1>
+          <p class="lead">
+            Suunnittelen ja koodaan käyttöliittymiä, jotka toimivat <em>kaikille</em> – 
+            myös väsyneenä, kiireessä tai stressin keskellä.
+          </p>
+          <p class="subtitle">
+            Saavutettavuus ei ole lisäominaisuus. Se on lähtökohta.
+          </p>
+        </div>
+      </div>
+      <div class="hero-bg"></div>
+    </section>
+
+    <!-- What I Do -->
+    <section class="what-i-do">
+      <div class="container">
+        <h2>Mitä teen?</h2>
+        <div class="grid">
+          <div class="card card-1">
+            <div class="card-icon">🎨</div>
+            <h3>Suunnittelen</h3>
+            <p>
+              Käyttöliittymiä, jotka eivät vaadi täydellistä keskittymistä. 
+              Selkeitä, ymmärrettäviä, inhimillisiä.
+            </p>
+          </div>
+          <div class="card card-2">
+            <div class="card-icon">💻</div>
+            <h3>Koodaan</h3>
+            <p>
+              Saavutettavia komponentteja, jotka toimivat näppäimistöllä, 
+              ruudunlukijalla ja kaikilla laitteilla.
+            </p>
+          </div>
+          <div class="card card-3">
+            <div class="card-icon">🔍</div>
+            <h3>Auditoin</h3>
+            <p>
+              Palveluiden saavutettavuutta – sekä teknisesti että 
+              inhimillisestä näkökulmasta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies Preview -->
+    <section class="case-studies">
+      <div class="container">
+        <h2 class="section-title">Case Studies</h2>
+        <div class="case-grid">
+          <div class="case-placeholder">
+            <div class="case-number">01</div>
+            <h3>Tulossa pian</h3>
+            <p>Syvällinen analyysi julkisista palveluista</p>
+          </div>
+          <div class="case-placeholder">
+            <div class="case-number">02</div>
+            <h3>Tulossa pian</h3>
+            <p>Komponentteja, jotka toimivat stressitilanteissa</p>
+          </div>
+          <div class="case-placeholder">
+            <div class="case-number">03</div>
+            <h3>Tulossa pian</h3>
+            <p>Saavutettavuus käytännössä</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <div class="container">
+        <h2>Ota yhteyttä</h2>
+        <div class="contact-content">
+          <a href="mailto:altmaian@gmail.com" class="email-link">
+            altmaian@gmail.com
+          </a>
+          <div class="social-links">
+            <a href="https://github.com/Altmaian" target="_blank" rel="noopener noreferrer" class="social-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* ============================================
+     CSS Variables - Dark Theme with Turquoise & Purple
+     ============================================ */
+  :root {
+    /* Colors */
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #13131a;
+    --color-text: #e8e8ee;
+    --color-text-muted: #9d9daa;
+    --color-accent-turquoise: #06d6a0;
+    --color-accent-purple: #a855f7;
+    --color-accent-purple-dark: #7c3aed;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --spacing-2xl: 8rem;
+    
+    /* Typography */
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'JetBrains Mono', monospace;
+  }
+
+  /* ============================================
+     Global Styles
+     ============================================ */
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+  main {
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  /* ============================================
+     Hero Section
+     ============================================ */
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(6, 214, 160, 0.15) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glitch-text {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .glitch-text .line {
+    display: block;
+    animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glitch-text .line:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-accent-turquoise), var(--color-accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+
+  .lead {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 700px;
+    margin-bottom: var(--spacing-sm);
+    animation: fadeIn 1s ease-out 0.3s both;
+  }
+
+  .lead em {
+    color: var(--color-accent-turquoise);
+    font-style: italic;
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    max-width: 650px;
+    line-height: 1.8;
+    animation: fadeIn 1s ease-out 0.5s both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ============================================
+     What I Do Section
+     ============================================ */
+  .what-i-do {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-bg-secondary);
+    position: relative;
+  }
+
+  .what-i-do::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-turquoise), transparent);
+  }
+
+  .what-i-do h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .card {
+    background: var(--color-bg);
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent-turquoise), var(--color-accent-purple));
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card:hover {
+    border-color: rgba(168, 85, 247, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .card p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  /* ============================================
+     Case Studies Section
+     ============================================ */
+  .case-studies {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-bg);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .case-placeholder {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-lg) var(--spacing-md);
+    border-radius: 4px;
+    border: 1px dashed rgba(6, 214, 160, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .case-placeholder:hover {
+    border-color: var(--color-accent-turquoise);
+    border-style: solid;
+  }
+
+  .case-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent-purple);
+    opacity: 0.3;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .case-placeholder h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+
+  .case-placeholder p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+  }
+
+  /* ============================================
+     Contact Section
+     ============================================ */
+  .contact {
+    padding: var(--spacing-xl) 0 var(--spacing-2xl);
+    text-align: center;
+    background: var(--color-bg-secondary);
+    position: relative;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-purple), transparent);
+  }
+
+  .contact h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .email-link {
+    font-family: var(--font-body);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--color-accent-turquoise);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    padding: var(--spacing-xs) 0;
+  }
+
+  .email-link:hover,
+  .email-link:focus {
+    border-bottom-color: var(--color-accent-turquoise);
+    color: var(--color-text);
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .social-link {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover,
+  .social-link:focus {
+    border-color: var(--color-accent-purple);
+    color: var(--color-accent-purple);
+    transform: translateY(-2px);
+  }
+
+  .social-link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ============================================
+     Focus Styles (Accessibility)
+     ============================================ */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-accent-turquoise);
+    outline-offset: 4px;
+  }
+
+  /* ============================================
+     Responsive
+     ============================================ */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: var(--spacing-xl) 0 var(--spacing-lg);
+    }
+
+    .grid,
+    .case-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .social-links {
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .social-link {
+      justify-content: center;
+    }
+  }
+</style>

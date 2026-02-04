@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@layer theme {
+  :root {
+    --font-sans: 'JetBrains Mono', monospace !important;
+    --font-mono: 'JetBrains Mono', monospace !important;
+    --default-font-family: 'JetBrains Mono', monospace !important;
+  }
+}

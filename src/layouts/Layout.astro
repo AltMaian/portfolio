@@ -15,7 +15,12 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Design Engineer - Saavutettavia käyttöliittymiä inhimilliseen tahtiin" />
-    <link rel="icon" type="image/svg+xml" href="/favicon-altmaian.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-altmaian.svg" />        
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <title>{title}</title>
   </head>
   <body>
@@ -68,7 +73,7 @@ const { title } = Astro.props;
   }
 
   body {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrains Mono', monospace !important;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -124,7 +129,7 @@ const { title } = Astro.props;
   }
 
   .logo {
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace !important;
     font-size: 1.25rem;
     font-weight: 700;
     color: #e8e8ee;

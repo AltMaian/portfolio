@@ -10,13 +10,7 @@ Design Engineer portfolio focusing on accessible UI design and development.
 
 ## 🚀 Live site
 
-[altmaian.dev](https://altmaian.dev) (tulossa pian)
-
-## 💻 Local development
-```sh
-npm install
-npm run dev
-```
+[altmaian.dev](https://my-portfolio-nu-one-29.vercel.app) (tulossa pian)
 
 ## 📝 About
 

@@ -1,0 +1,620 @@
+---
+// src/pages/about.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Tietoja | altmaian.dev">
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="page-title">
+            Tietoja <span class="highlight">minusta</span>
+          </h1>
+          <p class="lead">
+            Design Engineer joka yhdistää muotoilun, koodin ja empatian.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+      <div class="container">
+        <div class="story-content">
+          <h2>Taustani</h2>
+          <p>
+            Olen itseoppineesti aloittanut ohjelmoija, jolla on yli 10 vuoden 
+            kokemus koodaamisesta ja nykyään myös tietojenkäsittelyn AMK-tutkinto (2024). Taustani 
+            on yrittäjyydessä sekä perheyrityksessä, jossa olen ollut luomassa yrityksille suunnatun 
+            viestintäohjelmiston. Matkan varrella olen huomannut, että pelkkä 
+            tekninen osaaminen ei riitä - parhaat ratkaisut syntyvät kun ymmärtää 
+            käyttäjiä ja heidän todellisia tarpeitaan.
+          </p>
+          <p>
+            Äitinä ja yrittäjänä olen oppinut, mitä tarkoittaa tehdä 
+            asioita aikapaineen, väsymyksen ja jatkuvien keskeytysten ympäröimänä. 
+            Ymmärrän kognitiivisen kuorman ja multitaskaamisen käytännössä - en pelkästään 
+            teoriassa. Nämä kokemukset ovat muokanneet tapani suunnitella ja 
+            rakentaa käyttöliittymiä. Rakennan palveluita jotka toimivat myös 
+            silloin kun elämä ei toimi. Ainakaan kuten haluaisimme.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="container">
+        <h2 class="section-title">Arvoni</h2>
+        
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">♿</div>
+            <h3>Saavutettavuus ensin</h3>
+            <p>
+              Saavutettavuus ei ole lisäominaisuus - se on lähtökohta. 
+              Rakennan palveluita jotka toimivat kaikille, myös väsyneenä, 
+              kiireessä tai ruudunlukijalla.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">💚</div>
+            <h3>Empatia koodissa</h3>
+            <p>
+              Hyvä design ymmärtää että käyttäjät ovat oikeita ihmisiä - 
+              uupuneita, stressaantuneita, hajamielisiä. Rakennan 
+              käyttöliittymiä jotka antavat anteeksi.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🌱</div>
+            <h3>Jatkuva oppiminen</h3>
+            <p>
+              Teknologia kehittyy, ja minäkin. Jaan oppimisprosessiani 
+              avoimesti ja rakennan julkisesti. Virheet ovat osa matkaa.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🔓</div>
+            <h3>Avoimuus</h3>
+            <p>
+              Uskon open sourceen ja tiedon jakamiseen. Parhaat ratkaisut 
+              syntyvät kun autamme toisiamme kasvamaan.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🎨</div>
+            <h3>Visuaalisuus</h3>
+            <p>
+              Kauniit käyttöliittymät eivät sulje pois toimivuutta. Haluan työlläni muistuttaa, että yksinkertaisuus on kaunista.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+      <div class="container">
+        <h2 class="section-title">Mitä osaan</h2>
+        
+        <div class="skills-content">
+          <div class="skill-category">
+            <h3>Design</h3>
+            <ul>
+              <li>UI/UX-suunnittelu</li>
+              <li>Saavutettavuus (WCAG)</li>
+              <li>Design Systems</li>
+              <li>Käyttäjätutkimus</li>
+              <li>Figma</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Kehitys</h3>
+            <ul>
+              <li>HTML, CSS, JavaScript</li>
+              <li>React, Astro</li>
+              <li>TypeScript</li>
+              <li>Dart</li>
+              <li>Flutter</li>
+              <li>ASP.NET, ASP.NET MVC</li>
+              <li>ASP.NET Web API</li>
+              <li>C#</li>
+              <li>Git / GitHub</li>
+              <li>Responsive Design</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Työkalut</h3>
+            <ul>
+              <li>VS Code</li>
+              <li>Storybook</li>
+              <li>Vercel</li>
+              <li>Screen reader -testaus</li>
+              <li>Browser DevTools</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="learning-note">
+          <p>
+            💡 Olen aina oppimassa uutta. Juuri nyt syvennän TypeScript-osaamistani 
+            ja rakennan Inclusive Starter -komponenttikirjastoa. Tavoitteenani on 
+            yhdistää vahva backend-taustani moderniin, saavutettavaan ja kauniiseen frontend-kehitykseen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach-section">
+      <div class="container">
+        <h2 class="section-title">Työskentelytapani</h2>
+        
+        <div class="approach-content">
+          <div class="approach-item">
+            <div class="approach-number">01</div>
+            <h3>Ymmärrä konteksti</h3>
+            <p>
+              Ennen kuin kirjoitan riviäkään koodia, haluan ymmärtää: 
+              Kuka käyttää? Missä tilanteessa? Mikä on todellinen ongelma?
+            </p>
+          </div>
+
+          <div class="approach-item">
+            <div class="approach-number">02</div>
+            <h3>Suunnittele saavutettavasti</h3>
+            <p>
+              Saavutettavuus ei ole jälkikäteen lisättävä ominaisuus. 
+              Se on osa jokaista design-päätöstä alusta alkaen.
+            </p>
+          </div>
+
+          <div class="approach-item">
+            <div class="approach-number">03</div>
+            <h3>Rakenna iteratiivisesti</h3>
+            <p>
+              Ei yhtä "valmista" versiota, vaan ongelma jaetaan osa-ongelmiin. Rakennan, testaan, opin, 
+              parannan. Käyttäjäpalaute ohjaa kehitystä.
+            </p>
+          </div>
+
+          <div class="approach-item">
+            <div class="approach-number">04</div>
+            <h3>Dokumentoi prosessi</h3>
+            <p>
+              Jaan oppimiani asioita avoimesti. Case Studyt eivät näytä 
+              vain lopputulosta, vaan koko matkan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Currently Section -->
+    <section class="currently-section">
+      <div class="container">
+        <div class="currently-content">
+          <h2>Juuri nyt</h2>
+          <ul>
+            <li>🚀 Rakennan <strong>Inclusive Starter</strong> -komponenttikirjastoa</li>
+            <li>📝 Kirjoitan Case Ctudyjä saavutettavuudesta</li>
+            <li>🌱 Syvennän TypeScript- ja frontend-osaamistani</li>
+            <li>💼 Yhdistän backend-kokemukseni (ASP.NET) frontend-designiin</li>
+            <li>💻 Etsin mielenkiintoisia projekteja ja yhteistyökumppaneita</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* ============================================
+     CSS Variables
+     ============================================ */
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #13131a;
+    --color-text: #e8e8ee;
+    --color-text-muted: #9d9daa;
+    --color-accent-turquoise: #06d6a0;
+    --color-accent-purple: #a855f7;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'JetBrains Mono', monospace;
+  }
+
+  main {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  /* Hero */
+  .hero {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    text-align: center;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-accent-turquoise), var(--color-accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .lead {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-text-muted);
+  }
+
+  /* Story Section */
+  .story-section {
+    padding: var(--spacing-lg) 0;
+    background: var(--color-bg-secondary);
+    position: relative;
+  }
+
+  .story-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-turquoise), transparent);
+  }
+
+  .story-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .story-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .story-content p {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Values Section */
+  .values-section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .value-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover {
+    border-color: rgba(6, 214, 160, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .value-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .value-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .value-card p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  /* Skills Section */
+  .skills-section {
+    padding: var(--spacing-lg) 0;
+    background: var(--color-bg-secondary);
+    position: relative;
+  }
+
+  .skills-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-purple), transparent);
+  }
+
+  .skills-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .skill-category h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .skill-category ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .skill-category li {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-category li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-turquoise);
+  }
+
+  .learning-note {
+    background: rgba(6, 214, 160, 0.08);
+    border: 1px solid rgba(6, 214, 160, 0.3);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .learning-note p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* Approach Section */
+  .approach-section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .approach-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .approach-item {
+    margin-bottom: var(--spacing-lg);
+    padding-left: 4rem;
+    position: relative;
+  }
+
+  .approach-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-purple);
+    opacity: 0.5;
+  }
+
+  .approach-item h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .approach-item p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  /* Currently Section */
+  .currently-section {
+    padding: var(--spacing-lg) 0;
+    background: var(--color-bg-secondary);
+    position: relative;
+  }
+
+  .currently-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-turquoise), transparent);
+  }
+
+  .currently-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .currently-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+  }
+
+  .currently-content ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .currently-content li {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 2;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .currently-content strong {
+    color: var(--color-accent-turquoise);
+    font-weight: 500;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-purple), transparent);
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .cta-content p {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-button {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+    background: var(--color-accent-turquoise);
+    color: var(--color-bg);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-button:hover {
+    background: var(--color-accent-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(6, 214, 160, 0.3);
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+
+  .social-links a {
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .values-grid,
+    .skills-content {
+      grid-template-columns: 1fr;
+    }
+
+    .approach-item {
+      padding-left: 3rem;
+    }
+
+    .approach-number {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Focus styles */
+  a:focus-visible {
+    outline: 2px solid var(--color-accent-turquoise);
+    outline-offset: 4px;
+  }
+</style>

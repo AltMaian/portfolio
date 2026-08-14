@@ -1,6 +1,6 @@
 # altmaian.dev
 
-Design Engineer portfolio focusing on accessible UI design and development.
+Portfolio focusing on accessible UI design and development.
 
 ## 🎨 Built with
 
@@ -10,11 +10,11 @@ Design Engineer portfolio focusing on accessible UI design and development.
 
 ## 🚀 Live site
 
-[altmaian.dev](https://my-portfolio-nu-one-29.vercel.app) (tulossa pian)
+[altmaian.dev](https://my-portfolio-nu-one-29.vercel.app)
 
 ## 📝 About
 
-Portfolio showcasing case studies on accessible design, with focus on interfaces that work for everyone - especially when tired, stressed, or in a hurry.
+Portfolio showcasing case studies on accessible design, with focus on interfaces that work for everyone.
 
 ---
 

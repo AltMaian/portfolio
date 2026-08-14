@@ -12,6 +12,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Keskeneräiset sivut
+src/pages/case-study-template.astro
+src/pages/case-studies/nordea-mobiili-auditointi.astro
+src/pages/case-studies/kela-auditointi2.astro
+src/pages/case-studies/kela-auditointi.astro
+src/pages/case-studies/index.astro
 
 # environment variables
 .env

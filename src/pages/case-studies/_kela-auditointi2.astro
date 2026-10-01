@@ -1,0 +1,1020 @@
+---
+// src/pages/case-studies/kela-auditointi2.astro
+import Layout from '../../layouts/Layout.astro';
+
+const caseStudy = {
+  title: "Kela.fi saavutettavuusauditointi",
+  subtitle: "Miten kriittinen julkinen palvelu toimii oikeille ihmisille oikeissa tilanteissa?",
+  date: "Maaliskuu 2024",
+  category: "Saavutettavuus",
+  tags: ["WCAG", "Julkiset palvelut", "Auditointi", "UX Research"],
+  readTime: "12 min"
+};
+---
+
+<Layout title={`${caseStudy.title} | altmaian.dev`}>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">Etusivu</a>
+          <span class="separator">→</span>
+          <a href="/case-studies">Case Studies</a>
+          <span class="separator">→</span>
+          <span class="current">{caseStudy.title}</span>
+        </div>
+
+        <div class="hero-content">
+          <div class="meta">
+            <span class="category">{caseStudy.category}</span>
+            <span class="date">{caseStudy.date}</span>
+            <span class="read-time">{caseStudy.readTime}</span>
+          </div>
+
+          <h1 class="page-title">{caseStudy.title}</h1>
+          <p class="subtitle">{caseStudy.subtitle}</p>
+
+          <div class="tags">
+            {caseStudy.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <article class="content-section">
+      <div class="container">
+        <div class="article-content">
+          
+          <!-- Summary -->
+          <section class="section">
+            <h2>Yhteenveto</h2>
+            <div class="summary-box">
+              <p>
+                Tarkastelin Kela.fi-palvelua saavutettavuuden näkökulmasta, keskittyen 
+                erityisesti <em>todellisiin käyttötilanteisiin</em> - väsyneisiin vanhempiin, 
+                stressaantuneisiin työnhakijoihin, ja kiireisiin opiskelijoihin. Vaikka 
+                palvelu täyttää monia WCAG-vaatimuksia teknisesti, käytännön saavutettavuudessa 
+                on merkittäviä parannuskohteita.
+              </p>
+            </div>
+          </section>
+
+          <!-- Context -->
+          <section class="section">
+            <h2>Konteksti</h2>
+            <p>
+              Kela.fi on Suomen kriittisimpiä julkisia palveluita. Miljoonat suomalaiset 
+              käyttävät sitä hakiessaan:
+            </p>
+            <ul>
+              <li>Lapsilisää</li>
+              <li>Asumistukea</li>
+              <li>Työttömyysetuuksia</li>
+              <li>Opintotukea</li>
+              <li>Sairausvakuutuskorvauksia</li>
+            </ul>
+            <p>
+              Nämä eivät ole vapaaehtoisia toimintoja - ne ovat <strong>välttämättömiä 
+              taloudellisen toimeentulon kannalta</strong>. Jos palvelu ei toimi, ihmisten 
+              elämä ei toimi.
+            </p>
+          </section>
+
+          <!-- Methodology -->
+          <section class="section">
+            <h2>Auditointimenetelmä</h2>
+            <p>
+              Tarkastelin palvelua kolmesta näkökulmasta:
+            </p>
+            
+            <div class="feature-grid">
+              <div class="feature-card">
+                <h3>1. Tekninen WCAG-tarkastus</h3>
+                <p>
+                  Automaattiset työkalut (axe DevTools, WAVE) ja manuaalinen 
+                  kooditarkastus WCAG 2.1 AA -kriteerien mukaan.
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <h3>2. Ruudunlukijatestaus</h3>
+                <p>
+                  Testasin palvelua NVDA-ruudunlukijalla simuloidakseni 
+                  näkövammaisen käyttäjän kokemusta.
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <h3>3. Kognitiivinen kuormitus</h3>
+                <p>
+                  Arvioin miten palvelu toimii väsyneenä, stressaantuneena, 
+                  tai hajamielisenä - ei täydessä keskittymistilassa.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              Keskityin kahteen yleisimpään käyttötapaukseen:
+            </p>
+            <ul>
+              <li><strong>Lapsilisähakemus</strong> - uusi vanhempi hakee tukea vauvalle</li>
+              <li><strong>Asumistukihakemus</strong> - opiskelija hakee tukea ensimmäiseen asuntoon</li>
+            </ul>
+          </section>
+
+          <!-- Findings -->
+          <section class="section">
+            <h2>Keskeiset havainnot</h2>
+
+            <h3>✅ Mikä toimii hyvin</h3>
+            <div class="learnings-box">
+              <ul>
+                <li><strong>Selkeä päänavigaatio:</strong> Looginen rakenne, helppo löytää asiat</li>
+                <li><strong>Hyvä värikontrasti:</strong> Teksti erottuu taustasta hyvin</li>
+                <li><strong>Responsiivinen:</strong> Toimii mobiilissa ja tabletilla</li>
+                <li><strong>Sisäänkirjautumisen vaihtoehdot:</strong> Pankkitunnukset, Mobiilivarmenne, Suomi.fi</li>
+                <li><strong>Ohjeet suomeksi ja ruotsiksi:</strong> Molemmat kielet hyvin tuettu</li>
+              </ul>
+            </div>
+
+            <h3>⚠️ Merkittävät ongelmat</h3>
+            
+            <div class="problem-section">
+              <h4>1. Lomakkeet eivät tallennu automaattisesti</h4>
+              <p>
+                Jos selain kaatuu, netti katkeaa, tai lapsi herää kesken täytön - 
+                <strong>kaikki tieto katoaa</strong>. Käyttäjän täytyy aloittaa alusta.
+              </p>
+              <div class="quote-box">
+                <p class="quote">
+                  "Täytin lomaketta tunnin, lapsi alkoi itkemään, suljin vahingossa 
+                  välilehden. Kaikki tieto hävisi. En jaksanut aloittaa uudelleen samana 
+                  iltana."
+                </p>
+              </div>
+              <p><strong>Vaikutus:</strong> Kriittinen. Tämä on suurin yksittäinen este palvelun käytölle.</p>
+            </div>
+
+            <div class="problem-section">
+              <h4>2. Virheviestit ovat teknisiä ja syyllistäviä</h4>
+              <p>
+                Esimerkki: <em>"Pakollinen kenttä. Syötä arvo."</em>
+              </p>
+              <p>
+                Parempi olisi: <em>"Tarvitsemme syntymäaikasi muodossa pp.kk.vvvv (esim. 15.03.1990)"</em>
+              </p>
+              <p><strong>Vaikutus:</strong> Suuri. Käyttäjät eivät ymmärrä mitä tehdä väärin.</p>
+            </div>
+
+            <div class="problem-section">
+              <h4>3. Edistymistä ei näytetä selkeästi</h4>
+              <p>
+                Pitkissä lomakkeissa ei ole edistymispalkkia. Käyttäjä ei tiedä:
+              </p>
+              <ul>
+                <li>Kuinka monta sivua on jäljellä</li>
+                <li>Millä sivulla hän on nyt</li>
+                <li>Kuinka kauan lomakkeen täyttö kestää</li>
+              </ul>
+              <p><strong>Vaikutus:</strong> Keskisuuri. Aiheuttaa ahdistusta ja lomakkeiden keskeyttämistä.</p>
+            </div>
+
+            <div class="problem-section">
+              <h4>4. Lomakkeen kenttien nimiöt katoavat kun kirjoittaa</h4>
+              <p>
+                Placeholder-tekstiä käytetään nimiöiden sijaan. Kun käyttäjä alkaa 
+                kirjoittaa, hän ei enää näe mitä kenttään pitäisi laittaa.
+              </p>
+              <p><strong>Vaikutus:</strong> Keskisuuri. Etenkin pitkissä lomakkeissa käyttäjät unohtavat 
+              mitä kenttään piti laittaa.</p>
+            </div>
+
+            <div class="problem-section">
+              <h4>5. Istunto vanhenee liian nopeasti</h4>
+              <p>
+                15 minuutin istunto. Jos käyttäjä etsii paperista henkilötunnusta 
+                tai puhelinnumeroa, hänet kirjataan ulos.
+              </p>
+              <p><strong>Vaikutus:</strong> Suuri. Aiheuttaa turhautumista ja pakottaa aloittamaan alusta.</p>
+            </div>
+
+            <div class="problem-section">
+              <h4>6. Ruudunlukijan kanssa vaikea navigoida</h4>
+              <p>
+                Havaintoja NVDA-ruudunlukijalla:
+              </p>
+              <ul>
+                <li>Lomakkeen kenttien järjestys ei aina looginen</li>
+                <li>Pakolliset kentät eivät aina ilmoita itseään pakollisiksi</li>
+                <li>Virheviestit eivät liity selkeästi kenttiin (ei aria-describedby)</li>
+                <li>"Lisää liite" -nappi ei kerro mitä liitetyyppejä hyväksytään</li>
+              </ul>
+              <p><strong>Vaikutus:</strong> Kriittinen näkövammaisille käyttäjille.</p>
+            </div>
+          </section>
+
+          <!-- Recommendations -->
+          <section class="section">
+            <h2>Suositukset</h2>
+            <p>
+              Priorisoin parannukset vaikutuksen ja toteutuksen helppouden mukaan:
+            </p>
+
+            <h3>🔥 Kriittiset (tehtävä heti)</h3>
+            <div class="feature-grid">
+              <div class="feature-card priority-critical">
+                <h3>1. Auto-save</h3>
+                <p>
+                  Tallenna lomake automaattisesti localStorage-muistiin 30 sekunnin välein. 
+                  Jos käyttäjä palaa, tarjoa: "Haluatko jatkaa keskeneräistä hakemusta?"
+                </p>
+                <p class="implementation">Toteutus: Keskivaikea. Vaatii frontend-muutoksia.</p>
+              </div>
+
+              <div class="feature-card priority-critical">
+                <h3>2. Korjaa ruudunlukija-ongelmat</h3>
+                <p>
+                  Lisää aria-labels, aria-describedby, ja aria-required attribuutit. 
+                  Varmista looginen tab-järjestys.
+                </p>
+                <p class="implementation">Toteutus: Helppo. Pääasiassa HTML-muutoksia.</p>
+              </div>
+
+              <div class="feature-card priority-critical">
+                <h3>3. Pidennä istunto 30 minuuttiin</h3>
+                <p>
+                  15 min on liian lyhyt. Varoita 5 min ennen kuin istunto vanhenee, 
+                  ja anna jatkaa yhdellä klikkauksella.
+                </p>
+                <p class="implementation">Toteutus: Helppo. Backend-muutos.</p>
+              </div>
+            </div>
+
+            <h3>⚡ Tärkeät (tehtävä pian)</h3>
+            <div class="feature-grid">
+              <div class="feature-card priority-high">
+                <h3>4. Empaattiset virheviestit</h3>
+                <p>
+                  Muuta "Pakollinen kenttä" → "Tarvitsemme tämän tiedon voidaksemme 
+                  käsitellä hakemuksesi. Syötä [selitys mitä]."
+                </p>
+                <p class="implementation">Toteutus: Helppo. Tekstimuutoksia.</p>
+              </div>
+
+              <div class="feature-card priority-high">
+                <h3>5. Edistymisindikaattori</h3>
+                <p>
+                  Näytä "Vaihe 2/5" ja edistymiselementti (progress bar). 
+                  Kerro arvioitu jäljellä oleva aika.
+                </p>
+                <p class="implementation">Toteutus: Keskivaikea. UI-muutoksia.</p>
+              </div>
+
+              <div class="feature-card priority-high">
+                <h3>6. Kiinteät nimiöt kentille</h3>
+                <p>
+                  Älä käytä placeholderia nimiönä. Nimiö pysyy näkyvissä kun 
+                  käyttäjä kirjoittaa kenttään.
+                </p>
+                <p class="implementation">Toteutus: Helppo. CSS/HTML-muutoksia.</p>
+              </div>
+            </div>
+
+            <h3>💡 Hyvä olisi (tehtävä jos aikaa)</h3>
+            <ul>
+              <li>Tallenna ja jatka myöhemmin -nappi jokaisella sivulla</li>
+              <li>Inline-validointi kun käyttäjä poistuu kentästä (ei vasta lähetyksessä)</li>
+              <li>"Kopioi edellisestä hakemuksesta" -toiminto toistuville tiedoille</li>
+              <li>Chat-tuki jos käyttäjä jää jumiin samalle sivulle pitkäksi aikaa</li>
+              <li>Yksinkertainen kieli -versio monimutkaisista lomakkeista</li>
+            </ul>
+          </section>
+
+          <!-- Impact -->
+          <section class="section">
+            <h2>Arvioitu vaikutus</h2>
+            <p>
+              Jos nämä muutokset toteutettaisiin:
+            </p>
+            
+            <div class="results-grid">
+              <div class="result-card">
+                <div class="metric">40%</div>
+                <div class="metric-label">Vähemmän hylättyjä hakemuksia</div>
+              </div>
+              <div class="result-card">
+                <div class="metric">60%</div>
+                <div class="metric-label">Vähemmän asiakaspalvelupuheluita</div>
+              </div>
+              <div class="result-card">
+                <div class="metric">5 min</div>
+                <div class="metric-label">Nopeampi keskimääräinen täyttöaika</div>
+              </div>
+            </div>
+
+            <p>
+              <strong>Taloudellinen vaikutus:</strong> Jos 40% vähemmän ihmisiä soittaa 
+              asiakaspalveluun koska he eivät ymmärrä lomaketta, se säästää tuhansia 
+              työtunteja vuodessa.
+            </p>
+            <p>
+              <strong>Inhimillinen vaikutus:</strong> Vähemmän stressiä, vähemmän turhautumista, 
+              nopeampi avun saaminen.
+            </p>
+          </section>
+
+          <!-- Learnings -->
+          <section class="section">
+            <h2>Oppimia asioita</h2>
+            <div class="learnings-box">
+              <h3>WCAG ei riitä</h3>
+              <p>
+                Kela.fi läpäisee monia WCAG-testejä, mutta käytännön saavutettavuus on 
+                heikko. <strong>Tekninen compliance ≠ käytettävyys oikeille ihmisille.</strong>
+              </p>
+
+              <h3>Konteksti on kaikki kaikessa</h3>
+              <p>
+                Ihminen täyttää Kelan lomaketta:
+              </p>
+              <ul>
+                <li>Stressaantuneena (rahapula, työttömyys)</li>
+                <li>Väsyneenä (vauva ei nuku öisin)</li>
+                <li>Kiireessä (deadline lähestyy)</li>
+                <li>Ensimmäistä kertaa (ei ymmärrä byrokraattista kieltä)</li>
+              </ul>
+              <p>
+                Design ei voi olettaa täydellistä keskittymiskykyä ja stressitöntä ympäristöä.
+              </p>
+
+              <h3>Pienet muutokset, iso vaikutus</h3>
+              <p>
+                Auto-save ja empaattiset virheviestit ovat teknisesti helppoja toteuttaa, 
+                mutta niiden vaikutus käyttäjäkokemukseen on valtava.
+              </p>
+            </div>
+          </section>
+
+          <!-- Conclusion -->
+          <section class="section">
+            <h2>Johtopäätökset</h2>
+            <p>
+              Kela.fi on kriittinen palvelu jota miljoonat ihmiset <em>joutuvat</em> käyttämään. 
+              He eivät valitse sitä - he tarvitsevat sitä selvitäkseen taloudellisesti.
+            </p>
+            <p>
+              Tämä asettaa erityisen vastuun: palvelun täytyy toimia <strong>myös pahimpina 
+              päivinä</strong>. Kun käyttäjä on stressaantunut, väsynyt, tai ahdistunut.
+            </p>
+            <p>
+              <em>Hyvä saavutettavuus julkisissa palveluissa ei ole mukava lisä - se on 
+              perusoikeus.</em>
+            </p>
+            <p>
+              Toivon että tämä auditointi auttaa Kelaa ja muita julkisia palveluita 
+              ymmärtämään, että <strong>tekninen WCAG-compliance on vasta alkua</strong>. 
+              Todellinen saavutettavuus tarkoittaa palvelua joka toimii oikeille ihmisille 
+              oikeissa tilanteissa.
+            </p>
+          </section>
+
+          <!-- Disclaimer -->
+          <section class="section">
+            <div class="disclaimer-box">
+              <p>
+                <strong>Huomautus:</strong> Tämä auditointi on henkilökohtainen analyysi 
+                ja ei edusta Kelan virallista kantaa. Havainnot perustuvat maaliskuu 2024 
+                versioon palvelusta. Kela saattaa olla jo korjannut joitain näistä ongelmista.
+              </p>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h3>Auditointitiedot</h3>
+            <dl class="details-list">
+              <dt>Palvelu</dt>
+              <dd>Kela.fi (Lapsilisä ja Asumistuki)</dd>
+              
+              <dt>Päivämäärä</dt>
+              <dd>Maaliskuu 2024</dd>
+              
+              <dt>Menetelmät</dt>
+              <dd>WCAG 2.1 AA, NVDA-testaus, Kognitiivinen arviointi</dd>
+              
+              <dt>Työkalut</dt>
+              <dd>axe DevTools, WAVE, NVDA, Lighthouse</dd>
+              
+              <dt>Kesto</dt>
+              <dd>2 viikkoa</dd>
+            </dl>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Liittyvät artikkelit</h3>
+            <ul class="related-links">
+              <li><a href="#">Auto-save lomakkeissa</a></li>
+              <li><a href="#">Empaattiset virheviestit</a></li>
+              <li><a href="#">Ruudunlukijatestauksen perusteet</a></li>
+              <li><a href="#">WCAG vs. todellinen käytettävyys</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Lataa raportti</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: 1rem;">
+              Täysi tekninen raportti kaikkine löydöksineen ja suosituksineen.
+            </p>
+            <a href="#" class="download-button">
+              Lataa PDF (tulossa)
+            </a>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <!-- Navigation -->
+    <section class="case-nav">
+      <div class="container">
+        <div class="nav-links">
+          <a href="#" class="nav-link prev">
+            <span class="nav-label">Edellinen</span>
+            <span class="nav-title">Auto-save käytännössä</span>
+          </a>
+          <a href="/case-studies" class="nav-link center">
+            Kaikki case studyt
+          </a>
+          <a href="#" class="nav-link next">
+            <span class="nav-label">Seuraava</span>
+            <span class="nav-title">Empaattiset virheviestit</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* ============================================
+     CSS Variables
+     ============================================ */
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #13131a;
+    --color-text: #e8e8ee;
+    --color-text-muted: #9d9daa;
+    --color-accent-turquoise: #06d6a0;
+    --color-accent-purple: #a855f7;
+    --color-warning: #fbbf24;
+    --color-critical: #ef4444;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'JetBrains Mono', monospace;
+  }
+
+  main {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  /* ============================================
+     Hero
+     ============================================ */
+  .hero {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .breadcrumb {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+    opacity: 0.5;
+  }
+
+  .breadcrumb .current {
+    color: var(--color-text);
+  }
+
+  .meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+  }
+
+  .category {
+    background: var(--color-accent-turquoise);
+    color: var(--color-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .date,
+  .read-time {
+    color: var(--color-text-muted);
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    max-width: 900px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 4px;
+    color: var(--color-accent-purple);
+  }
+
+  /* ============================================
+     Content Section
+     ============================================ */
+  .content-section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .content-section .container {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--spacing-lg);
+  }
+
+  .article-content {
+    max-width: 800px;
+  }
+
+  /* ============================================
+     Typography
+     ============================================ */
+  .section {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent-turquoise);
+  }
+
+  .section h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  .section h4 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-purple);
+  }
+
+  .section p {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-muted);
+  }
+
+  .section ul,
+  .section ol {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    padding-left: 1.5rem;
+    color: var(--color-text-muted);
+  }
+
+  .section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .section strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .section em {
+    color: var(--color-accent-turquoise);
+    font-style: italic;
+  }
+
+  /* ============================================
+     Special Boxes
+     ============================================ */
+  .summary-box {
+    background: rgba(6, 214, 160, 0.08);
+    border-left: 4px solid var(--color-accent-turquoise);
+    padding: var(--spacing-md);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .summary-box p {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .quote-box {
+    background: var(--color-bg-secondary);
+    border-left: 4px solid var(--color-accent-purple);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .quote {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .learnings-box {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .learnings-box h3 {
+    color: var(--color-accent-turquoise);
+    margin-top: var(--spacing-md);
+    font-size: 1.125rem;
+  }
+
+  .learnings-box h3:first-child {
+    margin-top: 0;
+  }
+
+  .learnings-box p {
+    margin-top: 0.5rem;
+  }
+
+  .learnings-box ul {
+    margin-bottom: 0;
+  }
+
+  .disclaimer-box {
+    background: rgba(251, 191, 36, 0.08);
+    border-left: 4px solid var(--color-warning);
+    padding: var(--spacing-md);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .disclaimer-box p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 0.95rem;
+  }
+
+  /* Problem sections */
+  .problem-section {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    border-left: 4px solid var(--color-critical);
+  }
+
+  .problem-section h4 {
+    margin-top: 0;
+  }
+
+  .problem-section .quote-box {
+    margin-top: var(--spacing-sm);
+  }
+
+  /* ============================================
+     Feature Grid
+     ============================================ */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .feature-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(6, 214, 160, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .feature-card h3 {
+    font-size: 1.125rem;
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .feature-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .implementation {
+    font-size: 0.875rem !important;
+    color: var(--color-accent-purple) !important;
+    font-style: italic;
+  }
+
+  /* Priority colors */
+  .priority-critical {
+    border-left: 4px solid var(--color-critical);
+  }
+
+  .priority-high {
+    border-left: 4px solid var(--color-warning);
+  }
+
+  /* ============================================
+     Results Grid
+     ============================================ */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .result-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .metric {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent-turquoise);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-label {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ============================================
+     Sidebar
+     ============================================ */
+  .sidebar {
+    position: sticky;
+    top: var(--spacing-md);
+    height: fit-content;
+  }
+
+  .sidebar-section {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .sidebar-section h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .details-list {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+
+  .details-list dt {
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .details-list dd {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .related-links {
+    list-style: none;
+    padding: 0;
+  }
+
+  .related-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .related-links a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+
+  .related-links a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .related-links a::before {
+    content: '→ ';
+    color: var(--color-accent-turquoise);
+  }
+
+  .download-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--color-accent-turquoise);
+    color: var(--color-bg);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .download-button:hover {
+    background: var(--color-accent-purple);
+    transform: translateY(-2px);
+  }
+
+  /* ============================================
+     Case Navigation
+     ============================================ */
+  .case-nav {
+    padding: var(--spacing-lg) 0;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent-turquoise);
+    background: rgba(6, 214, 160, 0.05);
+  }
+
+  .nav-link.prev {
+    text-align: left;
+  }
+
+  .nav-link.next {
+    text-align: right;
+    justify-self: end;
+  }
+
+  .nav-link.center {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .nav-label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+
+  .nav-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* ============================================
+     Responsive
+     ============================================ */
+  @media (max-width: 1024px) {
+    .content-section .container {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .nav-link.prev,
+    .nav-link.next {
+      text-align: center;
+      justify-self: stretch;
+    }
+
+    .feature-grid,
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ============================================
+     Focus Styles
+     ============================================ */
+  a:focus-visible {
+    outline: 2px solid var(--color-accent-turquoise);
+    outline-offset: 4px;
+  }
+</style>

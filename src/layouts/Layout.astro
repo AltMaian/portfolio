@@ -32,11 +32,12 @@ const { title } = Astro.props;
     <header>
       <nav class="nav-container">
         <a href="/" class="logo">
-          <span class="logo-bracket">[</span>
+          <span class="logo-bracket" aria-hidden="true">[</span>
           <span class="logo-text">altmaian</span>
-          <span class="logo-bracket">]</span>
+          <span class="logo-bracket" aria-hidden="true">]</span>
         </a>
         <ul class="nav-links">
+          <li><a href="index" class="nav-link">Etusivu</a></li>
           <li><a href="about-page" class="nav-link">Tietoja</a></li>
         </ul>
       </nav>
@@ -84,6 +85,18 @@ const { title } = Astro.props;
   #main-content {
     flex: 1;
   }
+
+  .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
 
   /* ============================================
      Skip Link (Accessibility)

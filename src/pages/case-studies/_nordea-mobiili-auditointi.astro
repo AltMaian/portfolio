@@ -1,0 +1,1122 @@
+---
+// src/pages/case-studies/nordea-mobiili-auditointi.astro
+import Layout from '../../layouts/Layout.astro';
+
+const caseStudy = {
+  title: "Nordea-mobiilisovelluksen saavutettavuusauditointi",
+  subtitle: "Miten pankkiasiointi toimii kiireessä, stressaantuneena, ja TalkBack-ruudunlukijalla?",
+  date: "[Lisää päivämäärä]",
+  category: "Mobiilisaavutettavuus",
+  tags: ["Android", "TalkBack", "Mobiili", "Käytettävyys"],
+  readTime: "[Lisää lukuaika]"
+};
+---
+
+<Layout title={`${caseStudy.title} | altmaian.dev`}>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">Etusivu</a>
+          <span class="separator">→</span>
+          <a href="/case-studies">Case Studies</a>
+          <span class="separator">→</span>
+          <span class="current">{caseStudy.title}</span>
+        </div>
+
+        <div class="hero-content">
+          <div class="meta">
+            <span class="category">{caseStudy.category}</span>
+            <span class="date">{caseStudy.date}</span>
+            <span class="read-time">{caseStudy.readTime}</span>
+          </div>
+
+          <h1 class="page-title">{caseStudy.title}</h1>
+          <p class="subtitle">{caseStudy.subtitle}</p>
+
+          <div class="tags">
+            {caseStudy.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <article class="content-section">
+      <div class="container">
+        <div class="article-content">
+          
+          <!-- OHJE: Poista tämä osio kun täytät oikeilla tiedoilla -->
+          <section class="instructions-box">
+            <h2>📱 OHJEET MOBIILIAUDITOINNIN TEKEMISEEN</h2>
+            <p><strong>POISTA TÄMÄ OSIO ENNEN JULKAISUA!</strong></p>
+            
+            <h3>Vaihe 1: Valmistautuminen (30 min)</h3>
+            <ol>
+              <li><strong>Asenna työkalut Android-puhelimeesi:</strong>
+                <ul>
+                  <li>Nordea-mobiilisovellus (jos et ole jo asentanut)</li>
+                  <li>Accessibility Scanner (Google Play: "Accessibility Scanner")</li>
+                  <li>Ota TalkBack käyttöön (Asetukset → Saavutettavuus → TalkBack)</li>
+                </ul>
+              </li>
+              <li><strong>Luo dokumenttipohja:</strong>
+                <ul>
+                  <li>Google Docs / Notion tietokoneella</li>
+                  <li>Otsikot: TalkBack-testaus, Accessibility Scanner, Käytettävyystestaus, Stressitestaus</li>
+                </ul>
+              </li>
+              <li><strong>Valmistele kuvakaappaukset:</strong>
+                <ul>
+                  <li>Ota kuvakaappauksia ongelmista (Volyymi alas + Virta -painike)</li>
+                  <li>MUISTA: Blur kaikki henkilökohtaiset tiedot (tilinumerot, saldot, nimet)!</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h3>Vaihe 2: TalkBack-ruudunlukijatestaus (2-3h)</h3>
+            <ol>
+              <li><strong>Ota TalkBack käyttöön:</strong>
+                <ul>
+                  <li>Asetukset → Saavutettavuus → TalkBack → Päällä</li>
+                  <li>Käy läpi opastus (TalkBack opettaa peruskäytön)</li>
+                </ul>
+              </li>
+              
+              <li><strong>TalkBack-perusteet (TÄRKEÄÄ!):</strong>
+                <ul>
+                  <li><strong>Pyyhkäise oikealle</strong> = seuraava elementti</li>
+                  <li><strong>Pyyhkäise vasemmalle</strong> = edellinen elementti</li>
+                  <li><strong>Kaksoisnapauta</strong> = aktivoi elementti</li>
+                  <li><strong>Kaksi sormea pyyhkäisy ylös/alas</strong> = skrollaa sivua</li>
+                  <li><strong>Kaksi sormea napauta</strong> = keskeytä puhe</li>
+                  <li><strong>Sulje TalkBack</strong> = Volyymi ylös + alas 3 sekuntia</li>
+                </ul>
+              </li>
+
+              <li><strong>Testaa Nordea-sovelluksessa:</strong>
+                <ul>
+                  <li><strong>Kirjautuminen:</strong>
+                    <ul>
+                      <li>Avaa Nordea-sovellus TalkBackilla päällä</li>
+                      <li>Navigoi kirjautumisruutuun</li>
+                      <li>Lukeeko TalkBack selkeästi mitä kenttiä on?</li>
+                      <li>Kertooko "Tunnusluku" vs "Salasana" vai vain "Tekstikenttä"?</li>
+                      <li>Onnistuuko kirjautuminen pelkällä TalkBackilla?</li>
+                    </ul>
+                  </li>
+                  
+                  <li><strong>Päänäkymä:</strong>
+                    <ul>
+                      <li>Kun kirjauduit sisään, kuinka helppo navigoida?</li>
+                      <li>Löydätkö tilien saldot TalkBackilla?</li>
+                      <li>Kertooko TalkBack saldot selkeästi?</li>
+                      <li>Pääsetkö helposti "Tee maksu" -toimintoon?</li>
+                    </ul>
+                  </li>
+
+                  <li><strong>Tilisiirto:</strong>
+                    <ul>
+                      <li>Yritä tehdä tilisiirto TalkBackilla (ÄLÄ lähetä oikeasti!)</li>
+                      <li>Onko kentät selkeästi nimettyjä?</li>
+                      <li>Kertooko virheviestit mitä on väärin?</li>
+                      <li>Löydätkö "Lähetä" -napin helposti?</li>
+                    </ul>
+                  </li>
+
+                  <li><strong>Navigaatio:</strong>
+                    <ul>
+                      <li>Kuinka helposti navigoit välilehdeltä toiselle?</li>
+                      <li>Onko päävalikko looginen TalkBackilla?</li>
+                      <li>Lukeeko kaikki napit selkeästi mitä ne tekevät?</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li><strong>Dokumentoi ongelmat:</strong>
+                <ul>
+                  <li>"Nappi lukee vain 'Nappi' - ei kerro mitä se tekee"</li>
+                  <li>"Saldo lukee '1234.56' - ei kerro että kyse on euroista"</li>
+                  <li>"Virheviesti 'Tarkista syöte' - ei kerro mikä kenttä on väärin"</li>
+                  <li>"Tab-valikko ei kerro missä välilehdessä olen"</li>
+                </ul>
+              </li>
+
+              <li><strong>⚠️ MUISTA:</strong>
+                <ul>
+                  <li>ÄLÄ tee oikeita maksuja testauksen aikana!</li>
+                  <li>Blur kaikki henkilökohtaiset tiedot kuvakaappauksista</li>
+                  <li>Testaa 1-2 tuntia kerrallaan - TalkBack on uuvuttava jos et ole tottunut</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h3>Vaihe 3: Accessibility Scanner (30 min)</h3>
+            <ol>
+              <li><strong>Käynnistä Accessibility Scanner:</strong>
+                <ul>
+                  <li>Asetukset → Saavutettavuus → Accessibility Scanner → Päällä</li>
+                  <li>Näytölle ilmestyy sininen kelluke-nappi</li>
+                </ul>
+              </li>
+
+              <li><strong>Skannaa Nordea-sovellus:</strong>
+                <ul>
+                  <li>Avaa Nordea</li>
+                  <li>Paina kelluke-nappia (sininen ympyrä)</li>
+                  <li>Valitse "Scan screen" / "Skannaa näyttö"</li>
+                  <li>Scanner näyttää ongelmat oranssilla kehyksellä</li>
+                </ul>
+              </li>
+
+              <li><strong>Dokumentoi löydökset:</strong>
+                <ul>
+                  <li>Kuinka monta ongelmaa per näyttö?</li>
+                  <li>Mitä ongelmia? (esim. "Kosketusalue liian pieni")</li>
+                  <li>Mitkä näytöt olivat pahimpia?</li>
+                  <li>Ota kuvakaappaukset Scannerin löydöksistä</li>
+                </ul>
+              </li>
+
+              <li><strong>Tyypilliset ongelmat mitä Scanner löytää:</strong>
+                <ul>
+                  <li>"Kosketusalue alle 48x48 dp" (nappi liian pieni)</li>
+                  <li>"Tekstikontrasti alle 4.5:1" (vaikea lukea)</li>
+                  <li>"Ei sisältökuvausta" (kuva ilman alt-tekstiä)</li>
+                  <li>"Päällekkäiset klikkialueet" (napit liian lähellä)</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h3>Vaihe 4: Käytettävyystestaus oikeissa tilanteissa (1-2h)</h3>
+            <p><strong>Simuloi todellisia käyttötilanteita:</strong></p>
+            
+            <ol>
+              <li><strong>Yhdellä kädellä testaus (bussi/metro):</strong>
+                <ul>
+                  <li>Pidä puhelinta vain yhdessä kädessä</li>
+                  <li>Yritä kirjautua sisään peukalolla</li>
+                  <li>Tee tilisiirto yhdellä kädellä</li>
+                  <li>Onko napit tarpeeksi isoja? Liian lähellä toisiaan?</li>
+                  <li>Dokumentoi: "Kirjaudu-nappi reunassa, vaikea osua peukalolla"</li>
+                </ul>
+              </li>
+
+              <li><strong>Auringonvalossa (ulkona päivällä):</strong>
+                <ul>
+                  <li>Mene ulos kirkkaassa auringonpaisteessa</li>
+                  <li>Avaa Nordea</li>
+                  <li>Näetkö tekstit? Saldot? Napit?</li>
+                  <li>Ovatko kontrastit riittävät?</li>
+                  <li>Dokumentoi: "Harmaa teksti valkoisella - ei näy auringossa"</li>
+                </ul>
+              </li>
+
+              <li><strong>Kävellessä (hajamielinen):</strong>
+                <ul>
+                  <li>Kävele samalla kun käytät sovellusta (TURVALLISESTI!)</li>
+                  <li>Kuinka helppo keskittyä?</li>
+                  <li>Onko tärkeät asiat isosti ja selkeästi?</li>
+                  <li>Dokumentoi: "Liian pientä tekstiä, vaikea lukea kävellessä"</li>
+                </ul>
+              </li>
+
+              <li><strong>Stressaantuneena (väsynyt ilta):</strong>
+                <ul>
+                  <li>Testaa iltaisin kun olet väsynyt (klo 21-23)</li>
+                  <li>Yritä tehdä tilisiirto nopeasti</li>
+                  <li>Onko prosessi selkeä vai hämmentävä?</li>
+                  <li>Teetkö virheitä helpommin?</li>
+                  <li>Dokumentoi: "Vahvistusruutu epäselvä - melkein lähetin väärän summan"</li>
+                </ul>
+              </li>
+
+              <li><strong>Huonolla netillä (Lentotila ON/OFF):</strong>
+                <ul>
+                  <li>Laita lentotila päälle 5 sekunniksi → pois päältä</li>
+                  <li>Simuloi nettikatkoa</li>
+                  <li>Miten sovellus reagoi?</li>
+                  <li>Kertooko selkeästi että netti katkes?</li>
+                  <li>Säilyikö tiedot vai katosiko?</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h3>Vaihe 5: Visuaalinen tarkastus (30 min)</h3>
+            <ol>
+              <li><strong>Fonttikoko ja skaalautuminen:</strong>
+                <ul>
+                  <li>Asetukset → Näyttö → Fonttikoko → Suuri / Erittäin suuri</li>
+                  <li>Avaa Nordea</li>
+                  <li>Skaalautuuko teksti oikein?</li>
+                  <li>Menevätkö tekstit päällekkäin?</li>
+                  <li>Dokumentoi: "Suuri fontti rikkoo layoutin - nappi katkeaa"</li>
+                </ul>
+              </li>
+
+              <li><strong>Värikontrasti (visuaalinen arvio):</strong>
+                <ul>
+                  <li>Onko teksti hyvin luettavaa?</li>
+                  <li>Harmaa teksti valkoisella taustalla - toimiiko?</li>
+                  <li>Linkit - erottuvatko selkeästi?</li>
+                  <li>(Huom: et voi mitata kontrasti numerolla mobiilissa, mutta voit arvioida)</li>
+                </ul>
+              </li>
+
+              <li><strong>Kosketusnäppäimet:</strong>
+                <ul>
+                  <li>Ovatko napit riittävän isoja? (vähintään n. 1cm x 1cm)</li>
+                  <li>Onko nappien välissä tilaa? (ei vahinkopainalluksia)</li>
+                  <li>Voitko osua nappiin helposti?</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h3>Vaihe 6: Analysoi ja kirjoita (2-3h)</h3>
+            <ol>
+              <li><strong>Ryhmittele havainnot:</strong>
+                <ul>
+                  <li>TalkBack-ongelmat (esim. napit ilman nimiä)</li>
+                  <li>Accessibility Scanner -löydökset (esim. liian pienet napit)</li>
+                  <li>Käytettävyysongelmat (esim. vaikea käyttää yhdellä kädellä)</li>
+                  <li>Visuaaliset ongelmat (esim. huono kontrasti)</li>
+                </ul>
+              </li>
+
+              <li><strong>Priorisoi:</strong>
+                <ul>
+                  <li>Kriittiset: Estävät TalkBack-käyttäjää kokonaan</li>
+                  <li>Merkittävät: Vaikeuttavat huomattavasti käyttöä</li>
+                  <li>Pienet: Ärsyttävät mutta eivät estä</li>
+                </ul>
+              </li>
+
+              <li><strong>Täytä tämä pohja:</strong>
+                <ul>
+                  <li>Korvaa [TÄYTÄ TÄHÄN] -kohdat</li>
+                  <li>Lisää kuvakaappauksia (blur henkilökohtaiset tiedot!)</li>
+                  <li>Kirjoita omin sanoin</li>
+                  <li>Ole rehellinen - dokumentoi vain mitä LÖYSIT</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h3>💡 Vinkit:</h3>
+            <ul>
+              <li><strong>TalkBack on uuvuttavaa</strong> - testaa 30-60 min kerrallaan, pidä taukoja</li>
+              <li><strong>Älä arvaile</strong> - jos et löydä ongelmaa, se on OK!</li>
+              <li><strong>Blur KAIKKI henkilökohtaiset tiedot</strong> kuvakaappauksista</li>
+              <li><strong>Testaa oikeasti</strong> - älä oleta miten TalkBack toimii</li>
+              <li><strong>Dokumentoi hyvin toimivat asiat</strong> - ei pelkästään ongelmia</li>
+              <li><strong>Keskity käyttökokemukseen</strong> ei tekniseen koodiin (sitä et näe)</li>
+            </ul>
+
+            <h3>⚠️ Tärkeää - Mobiiliauditoinnin rajoitukset:</h3>
+            <ul>
+              <li>Et pääse sovelluksen koodiin → et voi tarkistaa aria-attribuutteja</li>
+              <li>Et voi käyttää axe DevTools tai WAVE → rajallisemmat työkalut</li>
+              <li>Sovellus voi päivittyä → havaintosi saattavat vanhentua</li>
+              <li>Keskity käyttäjäkokemukseen, ei tekniseen WCAG-complianceen</li>
+            </ul>
+
+            <h3>📸 Kuvakaappausten blur-ohjeet:</h3>
+            <ol>
+              <li>Ota kuvakaappaus (Volyymi alas + Virta)</li>
+              <li>Avaa Galleria / Kuvat</li>
+              <li>Muokkaa → Piirto / Markup</li>
+              <li>Piirrä paksulla pensselillä yli:
+                <ul>
+                  <li>Tilinumerot</li>
+                  <li>Saldot</li>
+                  <li>Nimet</li>
+                  <li>Henkilötunnukset</li>
+                  <li>Osoitteet</li>
+                </ul>
+              </li>
+              <li>Tallenna blurrattu versio</li>
+            </ol>
+
+            <h3>🚫 MUISTA:</h3>
+            <ul>
+              <li><strong>ÄLÄ julkaise ennen kuin olet tehnyt oikean auditoinnin</strong></li>
+              <li><strong>ÄLÄ käytä keksittyjä esimerkkejä</strong></li>
+              <li><strong>ÄLÄ tee oikeita maksuja testauksen aikana</strong></li>
+              <li><strong>BLUR kaikki henkilökohtaiset tiedot kuvakaappauksista</strong></li>
+              <li><strong>POISTA nämä ohjeet ennen julkaisua</strong></li>
+              <li>Lisää disclaimer: "Henkilökohtainen analyysi, ei Nordean virallinen kanta"</li>
+            </ul>
+          </section>
+          <!-- OHJEIDEN LOPPU -->
+
+          <!-- Summary -->
+          <section class="section">
+            <h2>Yhteenveto</h2>
+            <div class="summary-box">
+              <p>
+                [TÄYTÄ TÄHÄN: Lyhyt yhteenveto (3-4 lausetta). Esim: "Testasin Nordea-mobiilisovellusta 
+                (Android) TalkBack-ruudunlukijalla, Accessibility Scannerilla, ja erilaisissa 
+                käyttötilanteissa. Löysin X kriittistä TalkBack-ongelmaa ja Y käytettävyysongelmaa."]
+              </p>
+            </div>
+          </section>
+
+          <!-- Context -->
+          <section class="section">
+            <h2>Konteksti</h2>
+            <p>
+              [TÄYTÄ TÄHÄN: Miksi valitsit Nordea-mobiilisovelluksen? Miksi se on tärkeä? 
+              Mitä toimintoja testasit (kirjautuminen, tilisiirto, saldot)?]
+            </p>
+            <p>
+              [TÄYTÄ: Mikä Android-versio? Mikä puhelinmalli? Sovelluksen versio?
+              Esim: "Samsung Galaxy S21, Android 13, Nordea Mobile v10.5.2"]
+            </p>
+          </section>
+
+          <!-- Methodology -->
+          <section class="section">
+            <h2>Testausmenetelmä</h2>
+            <p>
+              [TÄYTÄ TÄHÄN: Miten testasit? Kuinka kauan? Mitä työkaluja käytit?]
+            </p>
+            
+            <div class="feature-grid">
+              <div class="feature-card">
+                <h3>1. TalkBack-testaus</h3>
+                <p>
+                  [TÄYTÄ: Kuinka kauan testasit TalkBackilla? Mitä toimintoja testasit?
+                  Oliko tämä ensimmäinen kerta TalkBackin käytössä?]
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <h3>2. Accessibility Scanner</h3>
+                <p>
+                  [TÄYTÄ: Montako näyttöä skannasit? Kuinka monta ongelmaa löytyi
+                  keskimäärin per näyttö?]
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <h3>3. Käytettävyystestaus</h3>
+                <p>
+                  [TÄYTÄ: Missä tilanteissa testasit? Yhdellä kädellä? Auringonvalossa?
+                  Kävellessä? Väsyneenä?]
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Findings -->
+          <section class="section">
+            <h2>Keskeiset havainnot</h2>
+
+            <h3>✅ Mikä toimii hyvin</h3>
+            <div class="learnings-box">
+              <p>[TÄYTÄ TÄHÄN: Positiiviset havainnot. Ole rehellinen!]</p>
+              <ul>
+                <li>[Esim: TalkBack luki saldot selkeästi]</li>
+                <li>[Esim: Kirjautumisnapit olivat isoja ja helposti osuttavia]</li>
+                <li>[Lisää...]</li>
+              </ul>
+            </div>
+
+            <h3>⚠️ TalkBack-ongelmat</h3>
+            
+            <div class="problem-section">
+              <h4>[TÄYTÄ: TalkBack-ongelman otsikko]</h4>
+              <p>
+                [TÄYTÄ: Mitä TalkBack-ongelmaa havaitsi? Ole spesifinen. 
+                Esim: "Tilisiirto-nappi lukee vain 'Nappi' - ei kerro että se tekee tilisiirron"]
+              </p>
+              <p><strong>Vaikutus:</strong> [Kriittinen/Suuri/Keskisuuri - näkövammainen käyttäjä]</p>
+              <p><strong>Missä:</strong> [Esim: Etusivu, Tilisiirtonäkymä]</p>
+            </div>
+
+            <div class="problem-section">
+              <h4>[TÄYTÄ: Toinen TalkBack-ongelma]</h4>
+              <p>[TÄYTÄ: Kuvaus]</p>
+              <p><strong>Vaikutus:</strong> [TÄYTÄ]</p>
+              <p><strong>Missä:</strong> [TÄYTÄ]</p>
+            </div>
+
+            <h3>⚠️ Accessibility Scanner -löydökset</h3>
+            
+            <div class="problem-section">
+              <h4>[TÄYTÄ: Scanner-ongelman otsikko]</h4>
+              <p>
+                [TÄYTÄ: Mitä Scanner löysi? Esim: "Vahvista-nappi on 42x42 dp, 
+                alle suositellun 48x48 dp minimikoon"]
+              </p>
+              <p><strong>Vaikutus:</strong> [TÄYTÄ]</p>
+              <p><strong>Missä:</strong> [TÄYTÄ]</p>
+            </div>
+
+            <h3>⚠️ Käytettävyysongelmat</h3>
+            
+            <div class="problem-section">
+              <h4>[TÄYTÄ: Käytettävyysongelman otsikko]</h4>
+              <p>
+                [TÄYTÄ: Mitä käytettävyysongelmaa havaitsi todellisissa tilanteissa?
+                Esim: "Yhdellä kädellä käyttäessä kirjaudu-nappi oli liian kaukana peukalosta"]
+              </p>
+              <p><strong>Tilanne:</strong> [Esim: Yhdellä kädellä käyttö bussissa]</p>
+              <p><strong>Vaikutus:</strong> [TÄYTÄ]</p>
+            </div>
+
+            <p>[LISÄÄ LISÄÄ ONGELMIA TARPEEN MUKAAN]</p>
+          </section>
+
+          <!-- Recommendations -->
+          <section class="section">
+            <h2>Suositukset</h2>
+            <p>
+              [TÄYTÄ TÄHÄN: Johdanto suosituksiin. Miten priorisoitit?]
+            </p>
+
+            <h3>🔥 Kriittiset (korjattava heti)</h3>
+            <div class="feature-grid">
+              <div class="feature-card priority-critical">
+                <h3>[TÄYTÄ: Suosituksen otsikko]</h3>
+                <p>
+                  [TÄYTÄ: Mitä pitäisi tehdä? Ole konkreettinen.
+                  Esim: "Lisää contentDescription kaikkiin nappeihin jotka TalkBack voi lukea"]
+                </p>
+                <p class="implementation">Android: [Esim: Lisää android:contentDescription XML:ään]</p>
+              </div>
+
+              <p>[LISÄÄ LISÄÄ KRIITTISIÄ SUOSITUKSIA]</p>
+            </div>
+
+            <h3>⚡ Tärkeät (korjattava pian)</h3>
+            <div class="feature-grid">
+              <div class="feature-card priority-high">
+                <h3>[TÄYTÄ: Suosituksen otsikko]</h3>
+                <p>[TÄYTÄ: Kuvaus]</p>
+                <p class="implementation">[TÄYTÄ]</p>
+              </div>
+
+              <p>[LISÄÄ LISÄÄ]</p>
+            </div>
+
+            <h3>💡 Hyvä olisi</h3>
+            <ul>
+              <li>[TÄYTÄ: Lisäparannuksia]</li>
+              <li>[TÄYTÄ: Lisää...]</li>
+            </ul>
+          </section>
+
+          <!-- Learnings -->
+          <section class="section">
+            <h2>Oppimia asioita</h2>
+            <div class="learnings-box">
+              <h3>[TÄYTÄ: Ensimmäinen oppiminen]</h3>
+              <p>
+                [TÄYTÄ: Mitä opit? Esim: "TalkBackin käyttö on yllättävän vaikeaa - 
+                ymmärrän nyt paremmin näkövammaisten haasteita"]
+              </p>
+
+              <h3>[TÄYTÄ: Toinen oppiminen]</h3>
+              <p>[TÄYTÄ]</p>
+
+              <p>[LISÄÄ LISÄÄ]</p>
+            </div>
+          </section>
+
+          <!-- Conclusion -->
+          <section class="section">
+            <h2>Johtopäätökset</h2>
+            <p>
+              [TÄYTÄ TÄHÄN: Loppuyhteenveto. Mitä haluat lukijan muistavan?
+              3-5 kappaletta omia ajatuksiasi mobiilisaavutettavuudesta.]
+            </p>
+          </section>
+
+          <!-- Disclaimer -->
+          <section class="section">
+            <div class="disclaimer-box">
+              <p>
+                <strong>Huomautus:</strong> Tämä on henkilökohtainen analyysi eikä edusta 
+                Nordean virallista kantaa. Havainnot perustuvat [TÄYTÄ PÄIVÄMÄÄRÄ] versioon 
+                Android-sovelluksesta (versio [TÄYTÄ VERSIO]). Nordea saattaa olla jo 
+                korjannut joitain näistä ongelmista.
+              </p>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h3>Testausympäristö</h3>
+            <dl class="details-list">
+              <dt>Sovellus</dt>
+              <dd>[TÄYTÄ: Nordea Mobile v10.5.2]</dd>
+              
+              <dt>Laite</dt>
+              <dd>[TÄYTÄ: Esim. Samsung Galaxy S21]</dd>
+              
+              <dt>Android-versio</dt>
+              <dd>[TÄYTÄ: Esim. Android 13]</dd>
+              
+              <dt>Päivämäärä</dt>
+              <dd>[TÄYTÄ PÄIVÄMÄÄRÄ]</dd>
+              
+              <dt>Työkalut</dt>
+              <dd>TalkBack, Accessibility Scanner</dd>
+              
+              <dt>Kesto</dt>
+              <dd>[TÄYTÄ: Esim. 6-8 tuntia]</dd>
+            </dl>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Testatut toiminnot</h3>
+            <ul class="related-links">
+              <li>[TÄYTÄ: Esim. Kirjautuminen]</li>
+              <li>[TÄYTÄ: Esim. Saldojen katselu]</li>
+              <li>[TÄYTÄ: Esim. Tilisiirto]</li>
+              <li>[TÄYTÄ: Lisää...]</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Liittyvät artikkelit</h3>
+            <ul class="related-links">
+              <li><a href="#">TalkBackin perusteet</a></li>
+              <li><a href="#">Mobiilisaavutettavuus</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <!-- Navigation -->
+    <section class="case-nav">
+      <div class="container">
+        <div class="nav-links">
+          <a href="#" class="nav-link prev">
+            <span class="nav-label">Edellinen</span>
+            <span class="nav-title">[Case study]</span>
+          </a>
+          <a href="/case-studies" class="nav-link center">
+            Kaikki case studyt
+          </a>
+          <a href="#" class="nav-link next">
+            <span class="nav-label">Seuraava</span>
+            <span class="nav-title">[Case study]</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* ============================================
+     CSS Variables
+     ============================================ */
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #13131a;
+    --color-text: #e8e8ee;
+    --color-text-muted: #9d9daa;
+    --color-accent-turquoise: #06d6a0;
+    --color-accent-purple: #a855f7;
+    --color-warning: #fbbf24;
+    --color-critical: #ef4444;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'JetBrains Mono', monospace;
+  }
+
+  main {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  /* Instructions box - REMOVE BEFORE PUBLISHING */
+  .instructions-box {
+    background: #fef3c7;
+    border: 4px solid #f59e0b;
+    color: #78350f;
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .instructions-box h2 {
+    color: #92400e !important;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.5rem;
+  }
+
+  .instructions-box h3 {
+    color: #92400e !important;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.125rem;
+  }
+
+  .instructions-box p,
+  .instructions-box li {
+    color: #78350f !important;
+  }
+
+  .instructions-box strong {
+    color: #92400e !important;
+  }
+
+  .instructions-box ol,
+  .instructions-box ul {
+    margin-top: 0.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* Hero */
+  .hero {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .breadcrumb {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+    opacity: 0.5;
+  }
+
+  .breadcrumb .current {
+    color: var(--color-text);
+  }
+
+  .meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+  }
+
+  .category {
+    background: var(--color-accent-turquoise);
+    color: var(--color-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .date,
+  .read-time {
+    color: var(--color-text-muted);
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    max-width: 900px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 4px;
+    color: var(--color-accent-purple);
+  }
+
+  /* Content Section */
+  .content-section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .content-section .container {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--spacing-lg);
+  }
+
+  .article-content {
+    max-width: 800px;
+  }
+
+  /* Typography */
+  .section {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent-turquoise);
+  }
+
+  .section h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  .section h4 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-purple);
+  }
+
+  .section p {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-muted);
+  }
+
+  .section ul,
+  .section ol {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    padding-left: 1.5rem;
+    color: var(--color-text-muted);
+  }
+
+  .section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .section strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .section em {
+    color: var(--color-accent-turquoise);
+    font-style: italic;
+  }
+
+  /* Special Boxes */
+  .summary-box {
+    background: rgba(6, 214, 160, 0.08);
+    border-left: 4px solid var(--color-accent-turquoise);
+    padding: var(--spacing-md);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .summary-box p {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .learnings-box {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .learnings-box h3 {
+    color: var(--color-accent-turquoise);
+    margin-top: var(--spacing-md);
+    font-size: 1.125rem;
+  }
+
+  .learnings-box h3:first-child {
+    margin-top: 0;
+  }
+
+  .learnings-box p {
+    margin-top: 0.5rem;
+  }
+
+  .learnings-box ul {
+    margin-bottom: 0;
+  }
+
+  .disclaimer-box {
+    background: rgba(251, 191, 36, 0.08);
+    border-left: 4px solid var(--color-warning);
+    padding: var(--spacing-md);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .disclaimer-box p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 0.95rem;
+  }
+
+  /* Problem sections */
+  .problem-section {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    border-left: 4px solid var(--color-critical);
+  }
+
+  .problem-section h4 {
+    margin-top: 0;
+  }
+
+  /* Feature Grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .feature-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(6, 214, 160, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .feature-card h3 {
+    font-size: 1.125rem;
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .feature-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .implementation {
+    font-size: 0.875rem !important;
+    color: var(--color-accent-purple) !important;
+    font-style: italic;
+  }
+
+  /* Priority colors */
+  .priority-critical {
+    border-left: 4px solid var(--color-critical);
+  }
+
+  .priority-high {
+    border-left: 4px solid var(--color-warning);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: sticky;
+    top: var(--spacing-md);
+    height: fit-content;
+  }
+
+  .sidebar-section {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .sidebar-section h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .details-list {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+
+  .details-list dt {
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .details-list dd {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .related-links {
+    list-style: none;
+    padding: 0;
+  }
+
+  .related-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .related-links a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+
+  .related-links a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .related-links a::before {
+    content: '→ ';
+    color: var(--color-accent-turquoise);
+  }
+
+  /* Case Navigation */
+  .case-nav {
+    padding: var(--spacing-lg) 0;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent-turquoise);
+    background: rgba(6, 214, 160, 0.05);
+  }
+
+  .nav-link.prev {
+    text-align: left;
+  }
+
+  .nav-link.next {
+    text-align: right;
+    justify-self: end;
+  }
+
+  .nav-link.center {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .nav-label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+
+  .nav-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .content-section .container {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .nav-link.prev,
+    .nav-link.next {
+      text-align: center;
+      justify-self: stretch;
+    }
+
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Focus Styles */
+  a:focus-visible {
+    outline: 2px solid var(--color-accent-turquoise);
+    outline-offset: 4px;
+  }
+</style>

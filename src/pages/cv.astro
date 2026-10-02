@@ -1,0 +1,365 @@
+---
+// src/pages/cv.astro
+import Layout from '../layouts/Layout.astro';
+
+const experience = [
+  {
+    role: 'UI Developer & projektipäällikkö',
+    time: '2022–2026',
+    place: 'Ohjelmistoyritys · viestintäratkaisut',
+    text: 'Vastasin viestintäohjelmiston käyttöliittymäkehityksestä ja toteutin useita API-pohjaisia lisäosia. Toimin projektipäällikkönä Microsoftin ISV Success -kumppanuusohjelmassa, jossa toteutimme REST API -integraation Azure Marketplace -lisenssipalveluun.',
+    tags: ['ASP.NET Razor', 'C#', 'Azure', 'REST API'],
+  },
+  {
+    role: 'Yrittäjä, web- ja ohjelmistokehitys',
+    time: '2015–2019',
+    place: 'Oma yritys',
+    text: 'Tein kotisivuja pienyrityksille ja ohjelmointiprojekteja yhteistyössä toisen yrittäjän kanssa. Vastasin käyttöliittymistä, tietokantasuunnittelusta ja asiakasyhteyksistä. Merkittävin projekti: kosketusnäyttöliittymä julkiselle toimijalle kahdeksaan toimipisteeseen.',
+    tags: ['ASP.NET MVC', 'C#', 'JavaScript', 'PHP', 'WordPress', 'SQL'],
+  },
+  {
+    role: 'Ohjelmistokehittäjä',
+    time: '2011–2015',
+    place: 'Ohjelmistoyritys · viestintäratkaisut',
+    text: 'Osana tiimiä suunnittelin ja kehitin yrityksen omaa viestintäjärjestelmää sekä toteutin asiakaskohtaisia näyttösisältöjä web-teknologioilla. Työhön kuului myös tietokantasuunnittelua ja ohjelmistokehitystä C#-kielellä.',
+    tags: ['C#', 'JavaScript', 'Web', 'HTML', 'PHP', 'SQL'],
+  },
+];
+
+const projects = [
+  {
+    name: 'AltMaian Learn',
+    text: 'Flutter-mobiilisovellus ja verkkopalvelu, joka opettaa digitaalisen saavutettavuuden perusteet kaikille aiheesta kiinnostuneille. Samalla se on oma oppimispolkuni saavutettavaan kehitykseen.',
+    tags: ['Flutter', 'Dart', 'WCAG'],
+  },
+  {
+    name: 'Inclusive Starter',
+    text: 'Avoimen lähdekoodin React-komponenttikirjasto, jonka tavoitteena on tehdä saavutettavasta kehityksestä helpompaa.',
+    tags: ['React', 'TypeScript', 'ARIA'],
+  },
+  {
+    name: 'Tämä portfolio',
+    text: 'Rakennettu Astrolla saavutettavuus edellä. Julkaistaan Vercelissä automaattisesti aina, kun muutokset viedään GitHubiin.',
+    tags: ['Astro', 'WCAG', 'Vercel', 'GitHub'],
+  },
+];
+
+const skills = [
+  { title: 'Saavutettavuus', items: ['WCAG 2.2 AA', 'ARIA', 'VoiceOver ja TalkBack', 'Saavutettavuusauditointi', 'EAA'] },
+  { title: 'Suunnittelu', items: ['Käyttöliittymäsuunnittelu', 'Figma', 'Responsiivinen suunnittelu'] },
+  { title: 'Kehitys', items: ['HTML, CSS, JavaScript', 'TypeScript, React', 'Astro, Tailwind', 'Flutter ja Dart', 'C#, ASP.NET', 'REST API, SQL'] },
+  { title: 'Testaus', items: ['axe DevTools, Lighthouse', 'Chrome DevTools', 'Selain- ja laitetestaus', 'Vitest'] },
+];
+---
+
+<Layout title="CV | altmaian.dev">
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="page-title">CV</h1>
+        <p class="lead">
+          Maiju Kalliokoski · UI / Frontend Developer · +15 vuotta IT-alalla. Suurena mielenkiinnon kohteena saavutettava suunnittelu ja ohjelmistokehitys.
+        </p>
+      </div>
+    </section>
+
+    <section class="cv-section alt" aria-labelledby="kokemus">
+      <div class="container narrow">
+        <h2 id="kokemus">Työkokemus</h2>
+        <ol class="entries">
+          {experience.map((e) => (
+            <li class="entry">
+              <div class="entry-head">
+                <h3>{e.role}</h3>
+                <p class="time">{e.time}</p>
+              </div>
+              <p class="place">{e.place}</p>
+              <p>{e.text}</p>
+              <ul class="tags" aria-label="Teknologiat">
+                {e.tags.map((t) => <li>{t}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="cv-section" aria-labelledby="koulutus">
+      <div class="container narrow">
+        <h2 id="koulutus">Koulutus</h2>
+        <ul class="entries">
+          <li class="entry">
+            <div class="entry-head">
+              <h3>Tietojenkäsittelytieteiden maisteriohjelma</h3>
+              <p class="time">2026–</p>
+            </div>
+            <p class="place">Tampereen yliopisto · Human-Technology Interaction</p>
+          </li>
+          <li class="entry">
+            <div class="entry-head">
+              <h3>Tradenomi, tietojenkäsittely</h3>
+              <p class="time">2024</p>
+            </div>
+            <p class="place">HAMK</p>
+            <p>Valitut opinnot: Web Accessibility (5/5) ja Mobile Programming (15 op).</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cv-section alt" aria-labelledby="projektit">
+      <div class="container narrow">
+        <h2 id="projektit">Omat projektit</h2>
+        <ul class="entries">
+          {projects.map((p) => (
+            <li class="entry">
+              <h3>{p.name}</h3>
+              <p>{p.text}</p>
+              <ul class="tags" aria-label="Teknologiat">
+                {p.tags.map((t) => <li>{t}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="cv-section" aria-labelledby="osaaminen">
+      <div class="container narrow">
+        <h2 id="osaaminen">Osaaminen</h2>
+        <div class="skills-grid">
+          {skills.map((s) => (
+            <div>
+              <h3>{s.title}</h3>
+              <ul class="skill-list">
+                {s.items.map((i) => <li>{i}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section alt" aria-labelledby="muuta">
+      <div class="container narrow">
+        <h2 id="muuta">Muuta</h2>
+        <dl class="misc">
+          <dt>Kielet</dt>
+          <dd>Suomi (äidinkieli), englanti (sujuva, myös tekninen kirjoittaminen)</dd>
+          <dt>Luottamustoimet</dt>
+          <dd>Yrittäjäjärjestöjen hallitustehtävät 2017–2019, mm. varapuheenjohtaja</dd>
+        </dl>
+        <p class="note">Laajempi CV ja yhteystiedot pyynnöstä.</p>
+<a href="https://www.linkedin.com/in/maiju-kalliokoski"
+   class="link-linkedin"
+   target="_blank"
+   rel="noopener noreferrer">
+  <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+  </svg>
+  LinkedIn-profiiliini pääset tästä.<span class="visually-hidden"> (avautuu uuteen välilehteen)</span>
+</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    background: #0a0a0f;
+    color: #e8e8ee;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .narrow {
+    max-width: 800px;
+  }
+
+  .hero {
+    padding: 6rem 0 4rem;
+    text-align: center;
+  }
+
+  .page-title {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .lead {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #9d9daa;
+  }
+
+  .cv-section {
+    padding: 4rem 0;
+  }
+
+  .cv-section.alt {
+    background: #13131a;
+  }
+
+  h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: #e8e8ee;
+  }
+
+  .entries {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .entry p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #9d9daa;
+    margin-top: 0.5rem;
+  }
+
+  .entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+
+  .entry .time {
+    margin: 0;
+    color: #06d6a0;
+    font-weight: 500;
+  }
+
+  .entry .place {
+    color: #e8e8ee;
+  }
+
+  .tags {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tags li {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    color: #e8e8ee;
+  }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.skills-grid > div {
+  background: #13131a;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.skills-grid h3 {
+  color: #06d6a0;
+  margin-bottom: 0.75rem;
+}
+
+  .skill-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .skill-list li {
+    color: #9d9daa;
+    line-height: 1.7;
+    margin-bottom: 0.25rem;
+  }
+
+  .misc dt {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    margin-top: 1.25rem;
+  }
+
+  .misc dd {
+    margin: 0.25rem 0 0;
+    color: #9d9daa;
+    line-height: 1.7;
+  }
+
+  .note {
+    margin-top: 2.5rem;
+    color: #e8e8ee;
+  }
+
+  .link-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #06d6a0;
+  color: #0a0a0f;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.link-linkedin:hover,
+.link-linkedin:focus-visible {
+  background: #a855f7;
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-linkedin:hover,
+  .link-linkedin:focus-visible {
+    transform: none;
+  }
+}
+
+  @media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+    }
+  }
+</style>

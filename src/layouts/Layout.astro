@@ -7,6 +7,15 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+// Nykyinen sivu ilman lopun kauttaviivaa, esim. "/cv"
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const navItems = [
+  { href: '/', label: 'Etusivu' },
+  { href: '/about-page', label: 'Tietoja' },
+  { href: '/cv', label: 'CV' },
+];
+
 ---
 
 <!doctype html>
@@ -37,9 +46,17 @@ const { title } = Astro.props;
           <span class="logo-bracket" aria-hidden="true">]</span>
         </a>
         <ul class="nav-links">
-          <li><a href="/" class="nav-link">Etusivu</a></li>
-          <li><a href="/about-page" class="nav-link">Tietoja</a></li>
-          <li><a href="/cv" class="nav-link">CV</a></li>
+{navItems.map((item) => (
+  <li>
+    <a
+      href={item.href}
+      class="nav-link"
+      aria-current={currentPath === item.href ? 'page' : undefined}
+    >
+      {item.label}
+    </a>
+  </li>
+))}
         </ul>
       </nav>
     </header>
@@ -210,6 +227,12 @@ const { title } = Astro.props;
   .nav-link[aria-current="page"] {
     color: #06d6a0;
   }
+
+  .nav-link:hover::after,
+.nav-link:focus::after,
+.nav-link[aria-current="page"]::after {
+  width: 100%;
+}
 
   /* ============================================
      Footer

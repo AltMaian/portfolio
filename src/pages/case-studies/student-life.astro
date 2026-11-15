@@ -1,0 +1,969 @@
+---
+// src/pages/case-studies/student-life.astro
+import Layout from '../../layouts/Layout.astro';
+
+const img = (name: string) => `/case-studies/student-life/${name}`;
+
+const caseStudy = {
+  title: 'Haastattelut muuttivat suunnan',
+  subtitle:
+    'Lähdimme suunnittelemaan opiskelijoille sovellusta edullisiin ruokaostoksiin. Haastattelut paljastivat, että raha ei rajoita vain ostoksia vaan myös sitä, pääseekö mukaan opiskelijaelämään.',
+  date: 'Syksy 2026',
+  category: 'Käyttäjätutkimus',
+  tags: ['Haastattelut', 'Rautalankamallit', 'Design rationale', 'Mobiili'],
+  readTime: '6 min',
+};
+
+const screens = [
+  {
+    src: '1-this-week.png',
+    title: 'Tämä viikko',
+    alt: 'This week -näkymä: hintasuodattimet All, Free, Under 5 euroa ja Under 10 euroa. Alla tapahtumakortit Board game night ja Student dinner party. Kortissa on päivä, paikka, Save-painike, isolla kokonaishinta 0 euroa tai About 12 euroa sekä montako opiskelijaa on menossa.',
+    notes: [
+      'Hintasuodatin ylimpänä, koska raha oli tutkimuksessa suurin este.',
+      'Kokonaishinta isolla jo kortissa, jotta kenenkään ei tarvitse avata tapahtumaa ja pettyä.',
+      'Kevyt sosiaalinen vihje, kuten "12 students going", mutta ei painostavia "vain 3 paikkaa jäljellä" -varoituksia.',
+    ],
+  },
+  {
+    src: '2-event.png',
+    title: 'Tapahtuma',
+    alt: 'Board game night -tapahtumasivu: paikka ja aika ylimpänä. What will this cost -laatikossa lippu 0 euroa, matka kävellen 0 euroa tai bussilla 3,10 euroa, ruoka ja juoma valinnaisia, yhteensä 0–3,10 euroa sekä tieto Fits your social budget, 18 euroa jäljellä tässä kuussa. Alla What to expect -lista ja Sign up -painike.',
+    notes: [
+      'Ei piilokuluja: lippu, matka ja valinnaiset kulut on laskettu valmiiksi.',
+      'Sovellus kertoo, mahtuuko tapahtuma omaan sosiaaliseen budjettiin.',
+      '"What to expect" vastaa kysymyksiin, joita moni ei kehtaisi kysyä, esimerkiksi sopiiko tapahtuma yksin tulevalle.',
+    ],
+  },
+  {
+    src: '3-confirmation.png',
+    title: 'Vahvistus',
+    alt: 'Vahvistusnäkymä: valintamerkki ja teksti You are signed up. Kysymys Would you like to go with others ja vaihtoehdot Join a small group, 3–5 opiskelijaa, kokoontuminen kirjaston edessä, sekä I will go on my own. Alla muistutukset: Add to calendar ja Remind me a day before -kytkin, jonka tila On näkyy myös tekstinä.',
+    notes: [
+      'Mahdollisuus liittyä pieneen ryhmään madaltaa kynnystä lähteä mukaan.',
+      'Yksin meneminen on yhtä hyvä vaihtoehto, ilman painostusta.',
+      'Kytkimen tila kerrotaan myös tekstinä: On tai Off.',
+    ],
+  },
+  {
+    src: '4-my-events.png',
+    title: 'Omat tapahtumat',
+    alt: 'My events -näkymä: Going-osiossa yksi tapahtuma ja Saved-osiossa kaksi tallennettua tapahtumaa kokonaishintoineen. Alla muistutuskytkin ja teksti Past events are removed automatically.',
+    notes: [
+      'Ilmoittautumiset ja tallennetut tapahtumat yhdessä paikassa.',
+      'Menossa olevat ensin, koska ne ovat tärkeimpiä.',
+      'Menneet tapahtumat poistuvat automaattisesti, joten näkymä pysyy kevyenä.',
+    ],
+  },
+  {
+    src: '5-no-free-events.png',
+    title: 'Ei ilmaisia tapahtumia',
+    alt: 'This week -näkymä Free-suodattimella: viesti No free events this week ja selitys, että tapahtumia lisätään usein. Alla ehdotus alle 5 euron tapahtumasta Pub quiz, linkki Free events next week (3) ja Notify me of new events -kytkin.',
+    notes: [
+      'Tyhjä tila ei ole tyhjä sivu: käyttäjä saa vaihtoehtoja.',
+      'Ehdotukset edullisista tapahtumista ja ensi viikon ilmaisista tapahtumista.',
+      'Ilmoitus uusista tapahtumista pitää kiinnostuksen yllä.',
+    ],
+  },
+];
+
+const decisions = [
+  {
+    title: 'Kokonaishinta näkyy heti',
+    what: 'Jokaisessa tapahtumakortissa näkyy kokonaishinta isolla, ja tapahtumasivu erittelee lipun, matkan ja valinnaiset kulut.',
+    alt: 'Näyttää vain tapahtuman oman hinnan tai hinnan vasta, kun tapahtuman avaa.',
+    why: 'Raha ja aika olivat haastatteluissa suurin syy jäädä pois. Piilokulut johtavat pettymykseen ja ahdistukseen. Kun koko hinta näkyy heti, käyttäjä voi päättää ennen kuin ehtii innostua.',
+    risk: 'Korostettu hinta voi pitää rahan kokemuksen keskiössä ja tuntua leimaavalta, ja matkakulut ovat arvioita. Riskiä pienentävät neutraali sanamuoto, kuten "About 12€", ja valinnaisten kulujen selkeä merkintä.',
+  },
+  {
+    title: 'Mahdollisuus liittyä pieneen ryhmään',
+    what: 'Ilmoittautumisen jälkeen käyttäjä voi liittyä 3–5 opiskelijan ryhmään, joka kokoontuu ennen tapahtumaa.',
+    alt: 'Ei vaihtoehtoa, vaan oletetaan, että jokainen tulee omin päin.',
+    why: 'Töissä käyvä opiskelija voi menettää ne hetket, joissa kaveriporukat muodostuvat. Kun hänellä myöhemmin on aikaa, ei välttämättä ole ketään, kenen kanssa lähteä.',
+    risk: 'Ryhmään ei ehkä tule ketään, tai ryhmä voi jännittää enemmän kuin yksin meneminen. Siksi yksin meneminen on aina yhtä näkyvä vaihtoehto. Ominaisuus perustuu tutkimuksen yleiseen havaintoon, joten se pitää testata käyttäjillä.',
+  },
+  {
+    title: 'Tilat tekstinä, ei pelkkänä värinä tai ikonina',
+    what: 'Navigaatiossa on tekstit ikonien rinnalla, ja tilat kuten Saved, On ja ✓ kerrotaan myös sanoin.',
+    alt: 'Tilat pelkillä ikoneilla tai värinmuutoksella.',
+    why: 'Pelkkä väri tai ikoni on ongelma henkilöille, jotka näkevät värit eri tavalla, ja ruudunlukijan käyttäjille. Tekstit auttavat myös ensikertalaisia, ja lopulta kaikkia.',
+    risk: 'Tekstit vievät enemmän tilaa. Siksi kuvaukset ovat lyhyitä, fonttikoko on vähintään 16 px, kontrasti vähintään 4,5:1 ja riviväli vähintään 1,5.',
+  },
+];
+---
+
+<Layout title={`${caseStudy.title} | altmaian.dev`}>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Murupolku">
+          <a href="/">Etusivu</a>
+          <span class="separator" aria-hidden="true">→</span>
+          <span class="current" aria-current="page">Student Life</span>
+        </nav>
+
+        <div class="hero-content">
+          <div class="meta">
+            <span class="category">{caseStudy.category}</span>
+            <span class="date">{caseStudy.date}</span>
+            <span class="read-time">Lukuaika {caseStudy.readTime}</span>
+          </div>
+          <h1 class="page-title">{caseStudy.title}</h1>
+          <p class="subtitle">{caseStudy.subtitle}</p>
+          <ul class="tags" aria-label="Aiheet">
+            {caseStudy.tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
+          <dl class="details">
+            <div><dt>Oma roolini</dt><dd>Haastattelu ja sen analyysi, concept map, Student Life -osion rautalankamallit ja design rationale</dd></div>
+            <div><dt>Tiimi</dt><dd>Ryhmätyö</dd></div>
+            <div><dt>Konteksti</dt><dd>User Interfaces and Human-Centred Design, Tampereen yliopisto</dd></div>
+            <div><dt>Menetelmät</dt><dd>Käyttäjähaastattelut, analyysi, concept map, rautalankamallit, design rationale</dd></div>
+            <div><dt>Työkalut</dt><dd>Figma</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <article class="content-section">
+      <div class="container">
+        <div class="article-content">
+
+          <section class="section" aria-labelledby="yhteenveto">
+            <h2 id="yhteenveto">Yhteenveto</h2>
+            <div class="summary-box">
+              <p>
+                Ryhmämme suunnitteli opiskelijoille sovelluksen, jonka teemana oli taloudellinen tasapaino. Oletimme, että suurin haaste on ruokaostokset ja välttämättömät menot.
+                Neljä haastattelua kumosi oletuksen: raha ja aika rajaavat opiskelijoita myös sosiaalisen elämän ulkopuolelle.
+                Sosiaalisesta elämästä tuli sovelluksen kolmas yhtä tärkeä osa, ja minä suunnittelin sen.
+              </p>
+            </div>
+          </section>
+
+          <section class="section" aria-labelledby="lahtotilanne">
+            <h2 id="lahtotilanne">Lähtötilanne</h2>
+            <p>
+              Kurssilla piti valita teema opiskelijoille suunnatulle sovellukselle. Valitsimme eettisyyden ja taloudellisen tasapainon. Halusimme ymmärtää:
+            </p>
+            <ul>
+              <li>miten opiskelijat priorisoivat rahankäyttöä, aikaa ja mahdollisuuksia</li>
+              <li>miten taloudellinen tausta vaikuttaa päätöksiin</li>
+              <li>miten kulttuuri ja asumistilanne vaikuttavat prioriteetteihin</li>
+              <li>miten itse itsensä elättävät opiskelijat eroavat niistä, jotka saavat merkittävää tukea.</li>
+            </ul>
+            <p>
+              <strong>Kohderyhmä:</strong> yliopisto-opiskelijat, jotka asuvat itsenäisesti ja tekevät arjen päätöksiä rajallisilla resursseilla. Ryhmää ei määrittänyt tulotaso, vaan tarve tasapainotella välttämättömien menojen, opintojen, työn, sosiaalisen elämän ja kestävien valintojen välillä.
+            </p>
+          </section>
+
+          <section class="section" aria-labelledby="oletus">
+            <h2 id="oletus">Alkuperäinen oletus</h2>
+            <p>
+              Konseptimme lähti omista kokemuksistamme yliopisto-opiskelijoina ja pienten lasten vanhempina. Ensimmäinen ideamme oli sovellus, joka löytää lähikaupoista edullisimmat vaihtoehdot ja kertoo, mitkä niistä ovat myös kestäviä valintoja.
+            </p>
+            <p>
+              Oletimme, että opiskelijoiden suurin haaste on ruokabudjetti ja kiinteiden menojen kattaminen.
+            </p>
+          </section>
+
+          <section class="section" aria-labelledby="haastattelut">
+            <h2 id="haastattelut">Mitä haastattelut paljastivat</h2>
+            <p>
+              Haastattelimme neljää eri taustoista tulevaa yliopisto-opiskelijaa. Haastattelin itse yhden heistä ja analysoin oman haastatteluni. Ryhmämme kokosi analyyseistä yhteiset johtopäätökset.
+            </p>
+            <div class="quote-box">
+              <p class="quote">”Taloudellisen tilanteeni takia en pääse tänä syksynä luokkani opintomatkalle.”</p>
+            </div>
+            <div class="quote-box">
+              <p class="quote">”Joskus näen, kun luokkakaverit jäävät luentojen jälkeen juttelemaan, liittyvät järjestöihin, käyvät tapahtumissa tai lähtevät spontaanisti jonnekin yhdessä, kun minä lähden suoraan töihin.”</p>
+            </div>
+            <p class="note">Lainaukset on suomennettu.</p>
+            <p>
+              Raha rajoitti kahdella tavalla. Työssä käyvältä opiskelijalta puuttui aika osallistua, ja töitä tekemätön opiskelija ei välttämättä pystynyt maksamaan koulun järjestämää retkeä. Kummassakin tapauksessa tuloksena oli ulkopuolisuus.
+            </p>
+            <h3>Yhteiset johtopäätökset</h3>
+            <div class="feature-grid">
+              <div class="feature-card">
+                <h4>Kestävyys riippuu hinnasta</h4>
+                <p>Kestävä valinta tehdään, jos siihen on varaa.</p>
+              </div>
+              <div class="feature-card">
+                <h4>Raha rajoittaa osallistumista</h4>
+                <p>Talous vaikuttaa siihen, kuka pääsee mukaan opiskelijaelämään.</p>
+              </div>
+              <div class="feature-card">
+                <h4>Resurssit muokkaavat prioriteetteja</h4>
+                <p>Se, mitä on käytettävissä, ratkaisee, mikä on tärkeää.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" aria-labelledby="suunta">
+            <h2 id="suunta">Suunnan muutos</h2>
+            <p>
+              Tutkimuksen perusteella konseptimme kasvoi kolmeen yhtä vahvaan osaan:
+            </p>
+            <ul>
+              <li><strong>Smart Shopping:</strong> arjen ostokset, hintojen vertailu ja kestävät vaihtoehdot.</li>
+              <li><strong>Budget:</strong> tulojen, menojen ja kilpailevien prioriteettien hahmottaminen.</li>
+              <li><strong>Student Life:</strong> matalan kynnyksen osallistuminen tapahtumiin, kun kokonaishinta näkyy heti.</li>
+            </ul>
+            <figure class="wide wide-full">
+              <img src={img('concept-map.png')} alt="Concept map, jonka ylimpänä on Student Prioritization Under Financial Constraints ja sen alla Financial Trade-Offs. Siitä haarautuu kolme pääteemaa. Financial Context: tulot määrittävät ja välttämättömät menot rajoittavat taloudellista joustavuutta. Shopping Decisions: hintatietoisuus tukee edullisuutta, edullisuus vaikuttaa kestävyyteen ja vaihtoehtoinen kulutus tukee kestävyyttä. Student Life: mahdollisuuksiin pääsy ja sosiaalinen osallistuminen tukevat opiskelijan hyvinvointia. Taloudellinen joustavuus vaikuttaa edullisuuteen ja mahdollistaa pääsyn mahdollisuuksiin." loading="lazy" width="1800" height="1039" />
+              <figcaption>Tekemäni concept map: miten taloudelliset valinnat kytkeytyvät ostoksiin, opiskelijaelämään ja hyvinvointiin.</figcaption>
+            </figure>
+            <p>
+              Meille itsellemme sosiaaliset tapahtumat eivät olisi olleet prioriteetti lastemme takia, joten emme olisi nostaneet niitä esiin. Ilman haastatteluja konsepti olisi jäänyt kapeaksi ja heijastanut ryhmämme elämäntilannetta, ei käyttäjien.
+            </p>
+          </section>
+
+          <section class="section" aria-labelledby="student-life">
+            <h2 id="student-life">Oma osuuteni: Student Life</h2>
+            <p>
+              Suunnittelin Student Life -osion rautalankamallit: miten opiskelija löytää edullisen tapahtuman, näkee mitä se oikeasti maksaa, ilmoittautuu ja löytää seuraa.
+            </p>
+            <figure class="wide wide-full">
+              <img src={img('wireframet.png')} alt="Student Life -osion viisi rautalankamallia rinnakkain: This week, Event, Confirmation, My events ja No free events." loading="lazy" width="1850" height="780" />
+              <figcaption>Student Life -osion käyttäjäpolku viidessä näkymässä.</figcaption>
+            </figure>
+
+            <ol class="screens">
+              {screens.map((s) => (
+                <li class="screen">
+                  <img src={img(s.src)} alt={s.alt} loading="lazy" width="804" height="1748" />
+                  <div>
+                    <h3>{s.title}</h3>
+                    <ul>
+                      {s.notes.map((n) => <li>{n}</li>)}
+                    </ul>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section class="section" aria-labelledby="paatokset">
+            <h2 id="paatokset">Design-päätökset</h2>
+            <p>
+              Kirjoitin jokaisesta keskeisestä päätöksestä perustelun: mitä valitsin, mikä oli vaihtoehto, miksi päädyin tähän ja mikä on riski.
+            </p>
+            {decisions.map((d) => (
+              <div class="decision">
+                <h3>{d.title}</h3>
+                <p>{d.what}</p>
+                <dl>
+                  <div><dt>Vaihtoehto</dt><dd>{d.alt}</dd></div>
+                  <div><dt>Miksi näin</dt><dd>{d.why}</dd></div>
+                  <div><dt>Riski</dt><dd>{d.risk}</dd></div>
+                </dl>
+              </div>
+            ))}
+          </section>
+
+          <section class="section" aria-labelledby="opit">
+            <h2 id="opit">Mitä opin</h2>
+            <div class="learnings-box">
+              <h3>Tärkein oppi</h3>
+              <ul>
+                <li>Omat oletukset ovat aina subjektiivisia. Vaikka yrittäisi ajatella objektiivisesti, jotain olennaista jää huomaamatta, jos asia ei kosketa omaa elämää.</li>
+              </ul>
+              <h3>Mitä tekisin seuraavaksi toisin</h3>
+              <ul>
+                <li>Tunnistaisin omista kokemuksista syntyvät oletukset jo alussa.</li>
+                <li>Tekisin käyttäjätutkimuksen heti tutkimustavoitteen määrittelyn jälkeen, kuten nytkin.</li>
+                <li>Rekrytoisin haastateltavat mahdollisimman läheltä kohderyhmää, mutta eri elämäntilanteista.</li>
+              </ul>
+              <h3>Seuraavaksi</h3>
+              <ul>
+                <li>Käytettävyystestaisin rautalankamallit, jotta näkisin, ymmärsimmekö käyttäjien tarpeet oikein ja priorisoimmeko oikeita asioita. Erityisesti pienryhmäominaisuus pitää testata.</li>
+              </ul>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="case-nav" aria-label="Sivuston navigointi">
+      <div class="container">
+        <div class="nav-links">
+          <a href="/" class="nav-link center">← Takaisin etusivulle</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* ============================================
+     CSS Variables
+     ============================================ */
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #13131a;
+    --color-text: #e8e8ee;
+    --color-text-muted: #9d9daa;
+    --color-accent-turquoise: #06d6a0;
+    --color-accent-purple: #a855f7;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  }
+
+  main {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  /* ============================================
+     Hero
+     ============================================ */
+  .hero {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .breadcrumb {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+    opacity: 0.5;
+  }
+
+  .breadcrumb .current {
+    color: var(--color-text);
+  }
+
+  .meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+  }
+
+  .category {
+    background: var(--color-accent-turquoise);
+    color: var(--color-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .date,
+  .read-time {
+    color: var(--color-text);
+    border: 1px solid var(--color-accent-turquoise);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+    overflow-wrap: break-word;
+    hyphens: manual;
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    max-width: 900px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 4px;
+    color: var(--color-accent-purple);
+  }
+
+  /* ============================================
+     Content Section
+     ============================================ */
+  .content-section {
+    padding: var(--spacing-lg) 0;
+  }
+
+
+
+
+
+  /* ============================================
+     Typography
+     ============================================ */
+  .section {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent-turquoise);
+  }
+
+  .section h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  .section p {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-muted);
+  }
+
+  .section ul,
+  .section ol {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    padding-left: 1.5rem;
+    color: var(--color-text-muted);
+  }
+
+  .section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .section strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .section em {
+    color: var(--color-accent-turquoise);
+    font-style: italic;
+  }
+
+  /* ============================================
+     Special Boxes
+     ============================================ */
+  .summary-box {
+    background: rgba(6, 214, 160, 0.08);
+    border-left: 4px solid var(--color-accent-turquoise);
+    padding: var(--spacing-md);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .summary-box p {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .quote-box {
+    background: var(--color-bg-secondary);
+    border-left: 4px solid var(--color-accent-purple);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .quote {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .learnings-box {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .learnings-box h3 {
+    color: var(--color-accent-turquoise);
+    margin-top: var(--spacing-md);
+  }
+
+  .learnings-box h3:first-child {
+    margin-top: 0;
+  }
+
+  .learnings-box ul {
+    margin-bottom: 0;
+  }
+
+  /* ============================================
+     Feature Grid
+     ============================================ */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .feature-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(6, 214, 160, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .feature-card h3 {
+    font-size: 1.125rem;
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* ============================================
+     Results Grid
+     ============================================ */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .result-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .metric {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent-turquoise);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-label {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ============================================
+     Sidebar
+     ============================================ */
+  .sidebar {
+    position: sticky;
+    top: var(--spacing-md);
+    height: fit-content;
+  }
+
+  .sidebar-section {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .sidebar-section h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .details-list {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+
+  .details-list dt {
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .details-list dd {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .related-links {
+    list-style: none;
+    padding: 0;
+  }
+
+  .related-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .related-links a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+
+  .related-links a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .related-links a::before {
+    content: '→ ';
+    color: var(--color-accent-turquoise);
+  }
+
+  /* ============================================
+     Case Navigation
+     ============================================ */
+  .case-nav {
+    padding: var(--spacing-lg) 0;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent-turquoise);
+    background: rgba(6, 214, 160, 0.05);
+  }
+
+  .nav-link.prev {
+    text-align: left;
+  }
+
+  .nav-link.next {
+    text-align: right;
+    justify-self: end;
+  }
+
+  .nav-link.center {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .nav-label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+
+  .nav-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* ============================================
+     Responsive
+     ============================================ */
+  @media (max-width: 1024px) {
+    .content-section .container {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .nav-link.prev,
+    .nav-link.next {
+      text-align: center;
+      justify-self: stretch;
+    }
+
+    .feature-grid,
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ============================================
+     Focus Styles
+     ============================================ */
+  a:focus-visible {
+    outline: 2px solid var(--color-accent-turquoise);
+    outline-offset: 4px;
+  }
+
+  /* ============================================
+     Case: lists, galleries, video
+     ============================================ */
+  .tags { list-style: none; padding: 0; margin: 0; }
+
+  .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-md) 0 0;
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-family: var(--font-body);
+  }
+
+  .details dt {
+    font-size: 0.875rem;
+    color: var(--color-accent-turquoise);
+    margin-bottom: 0.25rem;
+  }
+
+  .details dd {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 1.25rem; }
+  }
+
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .section .gallery {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+    display: grid;
+    gap: var(--spacing-sm);
+  }
+
+  .gallery-before { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .gallery-proto { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+  .gallery li { margin: 0; }
+
+  figure { margin: 0; }
+
+  .gallery img,
+  .wide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  figcaption {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+  }
+
+  .video,
+  .wide {
+    margin: var(--spacing-md) 0;
+  }
+
+  .video video {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 8px;
+    background: var(--color-bg-secondary);
+  }
+
+  .wide img { max-width: 420px; }
+
+  .section ol { list-style: decimal; }
+  .section ul:not(.gallery):not(.tags) { list-style: disc; }
+
+  .nav-links:has(> :only-child) { grid-template-columns: 1fr; justify-items: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .feature-card, .feature-card:hover { transition: none; transform: none; }
+  }
+
+  .wide-full img { max-width: 100%; }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 220px) 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+    margin: var(--spacing-md) 0;
+  }
+
+  .split img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .quote-source {
+    font-family: var(--font-body);
+    font-size: 0.9rem !important;
+    color: var(--color-text-muted);
+    margin: var(--spacing-sm) 0 0 !important;
+  }
+
+  @media (max-width: 600px) {
+    .split { grid-template-columns: 1fr; }
+    .split figure { max-width: 220px; }
+  }
+
+  .feature-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .section .note {
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+  }
+
+  .section .screens {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0 0;
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  .screen {
+    display: grid;
+    grid-template-columns: minmax(0, 220px) 1fr;
+    gap: var(--spacing-md);
+    align-items: start;
+    margin: 0 !important;
+  }
+
+  .screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .screen h3 {
+    margin-top: 0;
+    color: var(--color-accent-turquoise);
+  }
+
+  .decision {
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .decision h3 {
+    margin-top: 0;
+    color: var(--color-accent-turquoise);
+  }
+
+  .decision dl {
+    margin: var(--spacing-sm) 0 0;
+    display: grid;
+    gap: var(--spacing-sm);
+    font-family: var(--font-body);
+  }
+
+  .decision dt {
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .decision dd {
+    margin: 0.25rem 0 0;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    .screen { grid-template-columns: 1fr; }
+    .screen img { max-width: 240px; }
+  }
+</style>

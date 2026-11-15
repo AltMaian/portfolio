@@ -1,0 +1,840 @@
+---
+// src/pages/case-studies/kayttoopas.astro
+import Layout from '../../layouts/Layout.astro';
+
+const img = (name: string) => `/case-studies/kayttoopas/${name}`;
+
+const caseStudy = {
+  title: 'Käyttöopas itsenäiseen käyttöönottoon',
+  subtitle:
+    'Miten asiakas saa B2B-ohjelmiston käyttöön itse, ilman asentajaa? Suunnittelin käyttöoppaan kolmelle käyttäjäryhmälle ja testasin sen 15 käyttäjällä.',
+  date: 'Syksy 2024',
+  category: 'Käytettävyys',
+  tags: ['Käytettävyystestaus', 'Saavutettavuus', 'Selkeä kieli', 'B2B SaaS'],
+  readTime: '5 min',
+};
+
+const groups = [
+  {
+    name: 'IT-asiantuntija',
+    text: 'Konfiguroi näyttöjä ohjaavat tietokoneet, asentaa ohjelmiston ja liittää sen pilvipalveluun. Tuntee alan termit.',
+  },
+  {
+    name: 'Sisällön lisääjä',
+    text: 'Lisää ja ajastaa materiaalia näytöille selaimessa oman päätyönsä ohessa. Ei tarvitse olla IT-ammattilainen.',
+  },
+  {
+    name: 'Pääkäyttäjä',
+    text: 'Lisää ja poistaa käyttäjiä, hallitsee käyttöoikeuksia ja näkee organisaation lisenssit.',
+  },
+];
+---
+
+<Layout title={`${caseStudy.title} | altmaian.dev`}>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Murupolku">
+          <a href="/">Etusivu</a>
+          <span class="separator" aria-hidden="true">→</span>
+          <span class="current" aria-current="page">Käyttöopas</span>
+        </nav>
+
+        <div class="hero-content">
+          <div class="meta">
+            <span class="category">{caseStudy.category}</span>
+            <span class="date">{caseStudy.date}</span>
+            <span class="read-time">Lukuaika {caseStudy.readTime}</span>
+          </div>
+          <h1 class="page-title">{caseStudy.title}</h1>
+          <p class="subtitle">{caseStudy.subtitle}</p>
+          <ul class="tags" aria-label="Aiheet">
+            {caseStudy.tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
+          <dl class="details">
+            <div><dt>Rooli</dt><dd>Tutkimus, sisällön suunnittelu, toteutus ja käytettävyysarviointi</dd></div>
+            <div><dt>Tiimi</dt><dd>Yksin, toimeksiantajana ohjelmistoyritys</dd></div>
+            <div><dt>Konteksti</dt><dd>Opinnäytetyö, tietojenkäsittelyn tradenomi, HAMK</dd></div>
+            <div><dt>Menetelmät</dt><dd>Kehittämisprojekti, käytettävyystesti 15 käyttäjällä, kysely, saavutettavuusarviointi</dd></div>
+            <div><dt>Työkalut</dt><dd>WordPress, WAVE, Google Forms, Planner</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <article class="content-section">
+      <div class="container">
+        <div class="article-content">
+
+          <section class="section" aria-labelledby="yhteenveto">
+            <h2 id="yhteenveto">Yhteenveto</h2>
+            <div class="summary-box">
+              <p>
+                Ohjelmistoyritys alkoi myydä B2B SaaS -viestintäjärjestelmäänsä kansainvälisesti. Aiemmin yrityksen omat asiantuntijat asensivat järjestelmän asiakkaalle, nyt asiakkaan piti pystyä tekemään se itse.
+                Suunnittelin ja toteutin verkossa toimivan käyttöoppaan, joka jakautuu kolmen käyttäjäryhmän mukaan. Testasin oppaan 15 käyttäjällä ja korjasin löydetyt virheet ja saavutettavuusongelmat ennen julkaisua.
+              </p>
+            </div>
+          </section>
+
+          <section class="section" aria-labelledby="lahtotilanne">
+            <h2 id="lahtotilanne">Lähtötilanne</h2>
+            <p>
+              Järjestelmällä yritykset, oppilaitokset ja kunnat näyttävät tiedotteita ja muuta materiaalia info-näytöillä. Suomessa yritys toimitti asiakkaalle kaiken avaimet käteen: ohjelmiston, laitteet ja asennuksen. Asennukset tekivät asiantuntijat, jotka olivat tehneet niitä satoja kertoja.
+            </p>
+            <p>
+              Vuonna 2024 ohjelmisto tuli myyntiin Microsoftin kansainvälisille kauppapaikoille yli 50 maahan. Nyt asiakas ostaa pelkän ohjelmiston ja <strong>rakentaa järjestelmän itse omassa ympäristössään</strong>. Kaikki se tieto, joka ennen oli asentajan päässä, piti saada ohjeiksi.
+            </p>
+            <h3>Tutkimuskysymykset</h3>
+            <ul>
+              <li>Millaiset ovat toimivat käyttöohjeet?</li>
+              <li>Mikä on ohjeiden käytettävyys ja saavutettavuus käyttäjän näkökulmasta?</li>
+              <li>Miten ohjeita ylläpidetään jatkossa?</li>
+            </ul>
+          </section>
+
+          <section class="section" aria-labelledby="kayttajat">
+            <h2 id="kayttajat">Kolme käyttäjää, kolme tarvetta</h2>
+            <p>
+              Tärkein oivallus oli, että yksi opas ei palvele kaikkia. Järjestelmällä on kolme käyttäjäryhmää, joiden osaaminen ja tavoitteet eroavat toisistaan. Useimmat käyttävät järjestelmää oman päätyönsä ohessa, joten heidän pitää päästä alusta loppuun nopeasti ja ilman virheitä.
+            </p>
+            <div class="feature-grid">
+              {groups.map((g) => (
+                <div class="feature-card">
+                  <h3>{g.name}</h3>
+                  <p>{g.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section class="section" aria-labelledby="suunnittelu">
+            <h2 id="suunnittelu">Suunnittelu</h2>
+            <p>
+              Aloitin hahmottamalla kokonaisuutta mm. kysymyksillä: kenelle opas on, miksi sitä tarvitaan, millainen sen pitää olla ja mitä se sisältää.
+            </p>
+
+            <h3>Periaatteet, joilla opas kirjoitettiin</h3>
+            <ul>
+              <li><strong>Selkeä kieli.</strong> ISO 24495-1 -standardin neljä periaatetta: olennaisuus, löydettävyys, ymmärrettävyys ja käytettävyys.</li>
+              <li><strong>Käskymuoto.</strong> Ei "tiedoston lataaminen aloitetaan painamalla nappia" vaan "Aloita lataus painamalla nappia".</li>
+              <li><strong>Tekemisen järjestys.</strong> Yksi vaihe kerrallaan, ja jokaisessa vaiheessa kuvakaappaus, johon voi verrata omaa näkymää.</li>
+              <li><strong>Silmäiltävyys.</strong> Verkkotekstiä silmäillään. Informatiiviset otsikot ohjaavat lukijaa kerroksittain, eikä olennainen jää huomaamatta.</li>
+              <li><strong>Termit auki.</strong> IT-asiantuntijan ohjeissa saa käyttää alan termejä, sisällön lisääjän ohjeissa ei.</li>
+            </ul>
+          </section>
+
+          <section class="section" aria-labelledby="ratkaisu">
+            <h2 id="ratkaisu">Ratkaisu</h2>
+            <p>
+              Toteutin oppaan WordPress-sivustoksi. Etusivulla käyttäjä valitsee oman roolinsa, ja jokainen näkee vain omat ohjeensa. Jos jokin jää epäselväksi, sivulla on lomake tukipyynnölle.
+            </p>
+            <figure class="wide wide-full">
+              <img src={img('etusivu-valmis.jpg')} alt="Käyttöoppaan etusivu: kolme rinnakkaista laatikkoa IT Managementille, Content Managementille ja Local Adminille. Jokaisessa kerrotaan, kenelle osio on ja mitä se sisältää, ja alla on tumma painike osion ohjeisiin." loading="lazy" width="1100" height="395" />
+              <figcaption>Valmis etusivu: jokainen käyttäjäryhmä löytää oman polkunsa. Opas on englanniksi, koska se palvelee kansainvälisiä asiakkaita.</figcaption>
+            </figure>
+            <p>
+              Suunnittelin myös oppaan ylläpidon: sivun ylälaidassa näkyy ohjelmaversio, jota ohjeet koskevat, ja vanhat ohjeversiot arkistoidaan. Näin myös vanhempaa versiota käyttävä asiakas löytää omat ohjeensa.
+            </p>
+          </section>
+
+          <section class="section" aria-labelledby="saavutettavuus">
+            <h2 id="saavutettavuus">Saavutettavuus</h2>
+            <p>
+              Tavoitteena oli WCAG AA -taso. Tarkistin sivuston WAVE-työkalulla, ja ensimmäisestä versiosta löytyi kaksi tärkeää korjattavaa:
+            </p>
+            <ul>
+              <li><strong>Painikkeiden kontrasti.</strong> Valkoisen tekstin ja sinisen painikkeen kontrasti oli 4,28:1, mikä ei riitä AA-tasolle. Vaihdoin painikkeet tummiksi.</li>
+              <li><strong>Otsikkotasot.</strong> Otsikointi hyppäsi H1:stä suoraan H3:een. Korjasin tasot järjestykseen.</li>
+            </ul>
+            <figure class="wide wide-full">
+              <img src={img('etusivu-v1.jpg')} alt="Käyttöoppaan etusivun ensimmäinen versio: samat kolme laatikkoa, mutta painikkeet ovat kirkkaan sinisiä ja niissä on valkoinen teksti." loading="lazy" width="1090" height="390" />
+              <figcaption>Ensimmäinen versio: siniset painikkeet eivät läpäisseet kontrastivaatimusta.</figcaption>
+            </figure>
+            <p>
+              Yrityksen brändissä on viisi pääväriä. Ohjesivustolla käytin lopulta vain kahta, koska kolmas ei läpäissyt kontrastivaatimusta tekstin kanssa. Hillitty ulkoasu tukee myös sitä, että lukija keskittyy tekstiin.
+            </p>
+            <div class="split">
+              <figure>
+                <img src={img('wave-tulos.jpg')} alt="WAVE-työkalun yhteenveto: 0 virhettä, 0 kontrastivirhettä, 1 huomautus, 25 ominaisuutta, 11 rakenne-elementtiä ja 29 ARIA-määritettä." loading="lazy" width="227" height="330" />
+              </figure>
+              <p>
+                Valmiissa versiossa WAVE ei löytänyt yhtään virhettä. Yksi huomautus koski piilotettua sisältöä, ja suosittelin sen korjaamista seuraavaan versioon.
+              </p>
+            </div>
+          </section>
+
+          <section class="section" aria-labelledby="testaus">
+            <h2 id="testaus">Käytettävyystestaus</h2>
+            <p>
+              Testasin oppaan 15 käyttäjällä, viisi jokaisesta käyttäjäryhmästä. Jokainen teki oikean tehtävän pelkkiä ohjeita seuraten:
+            </p>
+            <ul>
+              <li><strong>IT-asiantuntija:</strong> konfiguroi tietokone ja asenna ohjelmisto.</li>
+              <li><strong>Sisällön lisääjä:</strong> lisää tiedosto tietylle näytölle.</li>
+              <li><strong>Pääkäyttäjä:</strong> lisää ja poista käyttäjä, muuta käyttöoikeuksia ja siirrä lisenssi toiselle näytölle.</li>
+            </ul>
+            <p>
+              Tehtävän jälkeen testaaja vastasi nimettömään kyselyyn. Siinä hän arvioi ohjeiden ymmärrettävyyden ja käytettävyyden asteikolla 1–5 ja kertoi, pääsikö hän etenemään odotetusti.
+            </p>
+
+            <div class="results-grid">
+              <div class="result-card">
+                <div class="metric">15</div>
+                <div class="metric-label">testaajaa kolmesta käyttäjäryhmästä</div>
+              </div>
+              <div class="result-card">
+                <div class="metric">5/5</div>
+                <div class="metric-label">käytettävyys sisällön lisääjillä ja pääkäyttäjillä</div>
+              </div>
+              <div class="result-card">
+                <div class="metric">2</div>
+                <div class="metric-label">virhettä IT-ohjeissa, korjattu ennen julkaisua</div>
+              </div>
+            </div>
+
+            <p>
+              Yksi IT-asiantuntija löysi ohjeista kaksi virhettä, ja korjasin ne julkaistavaan versioon. Muut neljä IT-asiantuntijaa konfiguroivat tietokoneen ja asensivat ohjelmiston onnistuneesti pelkkiä ohjeita seuraten.
+            </p>
+
+            <div class="quote-box">
+              <p class="quote">
+                ”Kokonaisuutena opas antaa täydellisen kuvan siitä, miten järjestelmä tulee ottaa käyttöön, miten järjestelmän ja tilauksen oikeuksia hallitaan sekä miten käyttäjä toteuttaa jokapäiväiset työtehtävänsä järjestelmän kanssa.”
+              </p>
+              <p class="quote-source">Toimeksiantajan palaute</p>
+            </div>
+          </section>
+
+          <section class="section" aria-labelledby="opit">
+            <h2 id="opit">Mitä opin</h2>
+            <div class="learnings-box">
+              <h3>Mikä toimi</h3>
+              <ul>
+                <li>Jako käyttäjäryhmiin: jokainen sai vain tarvitsemansa tiedon eikä hukkunut tietotulvaan.</li>
+                <li>Teoria ensin: selkeän kielen ja käytettävyyden periaatteet ohjasivat jokaista ratkaisua.</li>
+                <li>Kokonaisuuden hallinta: hyvä suunnitelma ja sen hiominen opitun perusteella.</li>
+              </ul>
+              <h3>Mitä tekisin toisin</h3>
+              <ul>
+                <li>Seuraisin testaajia ääneen ajattelun avulla. Kysely kertoo, onnistuiko tehtävä, mutta ei sitä, missä kohdassa käyttäjä epäröi.</li>
+                <li>Ottaisin testiin myös käyttäjiä, jotka eivät ole nähneet järjestelmää aiemmin, sillä uusi asiakas näkee sen ensimmäistä kertaa.</li>
+                <li>Testaisin automaattisen työkalun lisäksi näppäimistöllä ja ruudunlukijalla, koska työkalu löytää vain osan ongelmista.</li>
+              </ul>
+              <h3>Seuraavaksi</h3>
+              <ul>
+                <li>Suosittelin yritykselle asiakastyytyväisyyskyselyä, kun opas on ollut oikeiden asiakkaiden käytössä.</li>
+              </ul>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="case-nav" aria-label="Sivuston navigointi">
+      <div class="container">
+        <div class="nav-links">
+          <a href="/" class="nav-link center">← Takaisin etusivulle</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* ============================================
+     CSS Variables
+     ============================================ */
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #13131a;
+    --color-text: #e8e8ee;
+    --color-text-muted: #9d9daa;
+    --color-accent-turquoise: #06d6a0;
+    --color-accent-purple: #a855f7;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  }
+
+  main {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  /* ============================================
+     Hero
+     ============================================ */
+  .hero {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .breadcrumb {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+    opacity: 0.5;
+  }
+
+  .breadcrumb .current {
+    color: var(--color-text);
+  }
+
+  .meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+  }
+
+  .category {
+    background: var(--color-accent-turquoise);
+    color: var(--color-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .date,
+  .read-time {
+    color: var(--color-text);
+    border: 1px solid var(--color-accent-turquoise);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+    overflow-wrap: break-word;
+    hyphens: manual;
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    max-width: 900px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 4px;
+    color: var(--color-accent-purple);
+  }
+
+  /* ============================================
+     Content Section
+     ============================================ */
+  .content-section {
+    padding: var(--spacing-lg) 0;
+  }
+
+
+
+
+
+  /* ============================================
+     Typography
+     ============================================ */
+  .section {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent-turquoise);
+  }
+
+  .section h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  .section p {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-muted);
+  }
+
+  .section ul,
+  .section ol {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    padding-left: 1.5rem;
+    color: var(--color-text-muted);
+  }
+
+  .section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .section strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .section em {
+    color: var(--color-accent-turquoise);
+    font-style: italic;
+  }
+
+  /* ============================================
+     Special Boxes
+     ============================================ */
+  .summary-box {
+    background: rgba(6, 214, 160, 0.08);
+    border-left: 4px solid var(--color-accent-turquoise);
+    padding: var(--spacing-md);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .summary-box p {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .quote-box {
+    background: var(--color-bg-secondary);
+    border-left: 4px solid var(--color-accent-purple);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .quote {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .learnings-box {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .learnings-box h3 {
+    color: var(--color-accent-turquoise);
+    margin-top: var(--spacing-md);
+  }
+
+  .learnings-box h3:first-child {
+    margin-top: 0;
+  }
+
+  .learnings-box ul {
+    margin-bottom: 0;
+  }
+
+  /* ============================================
+     Feature Grid
+     ============================================ */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .feature-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(6, 214, 160, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .feature-card h3 {
+    font-size: 1.125rem;
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* ============================================
+     Results Grid
+     ============================================ */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .result-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .metric {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent-turquoise);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-label {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ============================================
+     Sidebar
+     ============================================ */
+  .sidebar {
+    position: sticky;
+    top: var(--spacing-md);
+    height: fit-content;
+  }
+
+  .sidebar-section {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .sidebar-section h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .details-list {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+
+  .details-list dt {
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .details-list dd {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .related-links {
+    list-style: none;
+    padding: 0;
+  }
+
+  .related-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .related-links a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+
+  .related-links a:hover {
+    color: var(--color-accent-turquoise);
+  }
+
+  .related-links a::before {
+    content: '→ ';
+    color: var(--color-accent-turquoise);
+  }
+
+  /* ============================================
+     Case Navigation
+     ============================================ */
+  .case-nav {
+    padding: var(--spacing-lg) 0;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent-turquoise);
+    background: rgba(6, 214, 160, 0.05);
+  }
+
+  .nav-link.prev {
+    text-align: left;
+  }
+
+  .nav-link.next {
+    text-align: right;
+    justify-self: end;
+  }
+
+  .nav-link.center {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .nav-label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+
+  .nav-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* ============================================
+     Responsive
+     ============================================ */
+  @media (max-width: 1024px) {
+    .content-section .container {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .nav-link.prev,
+    .nav-link.next {
+      text-align: center;
+      justify-self: stretch;
+    }
+
+    .feature-grid,
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ============================================
+     Focus Styles
+     ============================================ */
+  a:focus-visible {
+    outline: 2px solid var(--color-accent-turquoise);
+    outline-offset: 4px;
+  }
+
+  /* ============================================
+     Case: lists, galleries, video
+     ============================================ */
+  .tags { list-style: none; padding: 0; margin: 0; }
+
+  .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-md) 0 0;
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-family: var(--font-body);
+  }
+
+  .details dt {
+    font-size: 0.875rem;
+    color: var(--color-accent-turquoise);
+    margin-bottom: 0.25rem;
+  }
+
+  .details dd {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 1.25rem; }
+  }
+
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent-turquoise);
+  }
+
+  .section .gallery {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+    display: grid;
+    gap: var(--spacing-sm);
+  }
+
+  .gallery-before { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .gallery-proto { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+  .gallery li { margin: 0; }
+
+  figure { margin: 0; }
+
+  .gallery img,
+  .wide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  figcaption {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+  }
+
+  .video,
+  .wide {
+    margin: var(--spacing-md) 0;
+  }
+
+  .video video {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 8px;
+    background: var(--color-bg-secondary);
+  }
+
+  .wide img { max-width: 420px; }
+
+  .section ol { list-style: decimal; }
+  .section ul:not(.gallery):not(.tags) { list-style: disc; }
+
+  .nav-links:has(> :only-child) { grid-template-columns: 1fr; justify-items: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .feature-card, .feature-card:hover { transition: none; transform: none; }
+  }
+
+  .wide-full img { max-width: 100%; }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 220px) 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+    margin: var(--spacing-md) 0;
+  }
+
+  .split img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .quote-source {
+    font-family: var(--font-body);
+    font-size: 0.9rem !important;
+    color: var(--color-text-muted);
+    margin: var(--spacing-sm) 0 0 !important;
+  }
+
+  @media (max-width: 600px) {
+    .split { grid-template-columns: 1fr; }
+    .split figure { max-width: 220px; }
+  }
+</style>

@@ -1,27 +1,120 @@
 ---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
+
+const tampere = [
+  {
+    title: 'Suoritetut',
+    courses: [
+      { name: 'Psychology in Human-Technology Interaction' },
+      { name: 'User Interfaces and Human-Centred Design' },
+    ],
+  },
+  {
+    title: 'Meneillään',
+    courses: [
+      { name: 'Principles of Service Design' },
+      { name: 'User Interface Design: Principles, Methods, and Tools' },
+    ],
+  },
+  {
+    title: 'Saavutettavuusopinnot (meneillään)',
+    courses: [
+      { name: 'Fundamentals of Accessibility' },
+      { name: 'Accessibility and User Experience' },
+      { name: 'Web Accessibility I (technical)' },
+      { name: 'Web Accessibility II (content)' },
+      { name: 'Trends in Accessibility' },
+    ],
+  },
+];
+
+const hamk = [
+  { name: 'Web Accessibility' },
+  { name: 'Johdatus graafisen käyttöliittymän ohjelmointiin' },
+  { name: 'Ohjelmiston suunnittelumenetelmät' },
+  { name: 'Ohjelmistotestaus' },
+  { name: 'Ketterä kehitysprojekti' },
+  { name: 'Design Factory Project' },
+  { name: 'Sosiaalisen ja digitaalisen median analytiikka' },
+  { name: 'Mobile Programming -opintokokonaisuus' },
+  { name: 'Kyberturvallisuuden opintokokonaisuus' },
+  { name: 'Opinnäytetyö: käytettävyyden arviointi' },
+];
 ---
 
 <Layout title="altmaian.dev">
   <main>
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="page-title">
-            <span class="line">Hei! Olen <span class="line highlight">Maiju</span></span>
-          </h1>
-          <p class="lead">
-            Suunnittelen ja koodaan käyttöliittymiä, jotka toimivat <em>oikeille ihmisille</em> myös silloin, kun käyttäjä on väsynyt, kiireinen tai käyttää apuvälineitä. Saavutettavuus on minulle lähtökohta, ei lisäominaisuus. 
-          </p>
-          <p class="subtitle">
-            Tämä portfolio on dokumentaatio saavutettavuusasiantuntijuudestani suunnittelussa ja ohjelmistokehityksessä.
-          </p>
-        </div>
-      </div>
-      <div class="hero-bg"></div>
-    </section>
+<section class="hero-section" aria-labelledby="hero-otsikko">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-container">
+    <div class="hero-text">
+      <p class="open">
+        <span class="dot" aria-hidden="true"></span>
+        Avoin uusille työmahdollisuuksille
+      </p>
+      <h1 id="hero-otsikko" class="hero-title">
+        Hei! Olen <span class="highlight">Maiju</span>
+      </h1>
+      <p class="role">UI/UX-suunnittelija · saavutettavuus</p>
+<p class="lead">Olen aloittanut itseoppineena kehittäjänä ja ollut ohjelmistoalalla yli 15 vuotta.</p>
+<p class="lead">Opiskelen tietojenkäsittelytieteiden maisteriksi Tampereen yliopistossa Human-Technology Interaction -opintosuunnalla.</p>
+<p class="lead">Erityinen mielenkiinnon kohteeni on saavutettavien ohjelmistojen suunnittelu ja toteutus. Tämä portfolio toimii dokumentaationa asiantuntijuudestani.</p>
+    </div>
+    <div class="portrait">
+      <img src="/maiju.jpg" alt="Maiju Kalliokoski" width="540" height="540" />
+    </div>
+  </div>
+</section>
+
+<!-- Case Studies -->
+<section class="cases-section" id="case-studyt" aria-labelledby="case-studyt-otsikko">
+  <div class="cs-container">
+    <h2 id="case-studyt-otsikko" class="cs-title">Case studyt</h2>
+    <ul class="case-cards">
+      <li>
+        <article class="case-card">
+          <img src="/case-studies/kayttoopas/kuvitus.svg" alt="" width="400" height="240" loading="lazy" />
+          <div class="case-card-body">
+            <p class="case-card-tag">Käytettävyys</p>
+            <h3>
+              <a href="/case-studies/kayttoopas" class="case-card-link">Käyttöopas itsenäiseen käyttöönottoon</a>
+            </h3>
+            <p>Suunnittelin B2B SaaS -ohjelmistolle käyttöoppaan kolmelle käyttäjäryhmälle ja testasin sen 15 käyttäjällä. Opinnäytetyö.</p>
+            <p class="case-card-more" aria-hidden="true">Lue case →</p>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="case-card">
+          <img src="/case-studies/student-life/kuvitus.svg" alt="" width="400" height="240" loading="lazy" />
+          <div class="case-card-body">
+            <p class="case-card-tag">Käyttäjätutkimus</p>
+            <h3>
+              <a href="/case-studies/student-life" class="case-card-link">Haastattelut muuttivat suunnan</a>
+            </h3>
+            <p>Haastattelut kumosivat oletuksemme: raha rajaa opiskelijoita myös sosiaalisen elämän ulkopuolelle. Suunnittelin sovellukseen Student Life -osion.</p>
+            <p class="case-card-more" aria-hidden="true">Lue case →</p>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="case-card">
+          <img src="/case-studies/itsepalvelukassa/kuvitus.svg" alt="" width="400" height="240" loading="lazy" />
+          <div class="case-card-body">
+            <p class="case-card-tag">Käyttöliittymäsuunnittelu</p>
+            <h3>
+              <a href="/case-studies/itsepalvelukassa" class="case-card-link">Opiskelijaravintolan maksupääte</a>
+            </h3>
+            <p>Analysoin itsepalvelukassan kognitiivisen psykologian avulla, suunnittelin sen uudelleen paperiprototyypiksi ja testasin käyttäjällä.</p>
+            <p class="case-card-more" aria-hidden="true">Lue case →</p>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </div>
+</section>
 
     <!-- What I Do -->
     <section class="what-i-do">
@@ -105,6 +198,47 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 
+    <!-- Studies/Courses -->
+<section class="courses-section" aria-labelledby="opinnot-otsikko">
+  <div class="co-container">
+    <h2 id="opinnot-otsikko" class="co-title">Opinnot</h2>
+
+    <div class="co-grid">
+      <div class="co-card">
+        <h3>Tampereen yliopisto</h3>
+        <p class="co-sub">Tietojenkäsittelytieteiden maisteriohjelma · Human-Technology Interaction · 2026–</p>
+        {tampere.map((group) => (
+          <div class="co-group">
+            <h4>{group.title}</h4>
+            <ul>
+              {group.courses.map((c) => (
+                <li>
+                  {c.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="co-card">
+        <h3>Hämeen ammattikorkeakoulu</h3>
+        <p class="co-sub">Tradenomi, tietojenkäsittely · 2024</p>
+        <div class="co-group">
+          <h4>Valitut opinnot</h4>
+          <ul>
+            {hamk.map((c) => (
+              <li>
+                {c.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- Contact -->
     <section class="contact">
       <div class="container">
@@ -185,15 +319,6 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: var(--spacing-md);
   }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 50%, rgba(6, 214, 160, 0.15) 0%, transparent 50%);
-    z-index: 0;
-    pointer-events: none;
-  }
 
   .hero-content {
     position: relative;
@@ -231,29 +356,9 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
-  .highlight {
-    background: linear-gradient(135deg, var(--color-accent-turquoise), var(--color-accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    position: relative;
-  }
 
-  .lead {
-    font-family: var(--font-body);
-    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-    line-height: 1.7;
-    font-weight: 300;
-    max-width: 700px;
-    margin-bottom: var(--spacing-sm);
-    animation: fadeIn 1s ease-out 0.3s both;
-  }
 
   /* Emphasis (em) tyyli */
-  .lead em {
-  color: var(--color-accent-turquoise);
-  font-style: italic;
-  }
 
   .subtitle {
     font-family: var(--font-body);
@@ -685,5 +790,358 @@ import Layout from '../layouts/Layout.astro';
     .social-link {
       justify-content: center;
     }
+  }
+
+  /* ============================================
+     Projektit: ei ylimääräistä väliä viimeisen kortin alle
+     ============================================ */
+  .featured-project:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* ============================================
+     Hero (HeroSection)
+     ============================================ */
+  .hero-section {
+    --hs-bg: #0a0a0f;
+    --hs-text: #e8e8ee;
+    --hs-muted: #9d9daa;
+    --hs-turquoise: #06d6a0;
+    --hs-purple: #a855f7;
+    --hs-display: 'Space Mono', monospace;
+    --hs-body: 'JetBrains Mono', monospace;
+
+    position: relative;
+    background: var(--hs-bg);
+    color: var(--hs-text);
+    padding: 6rem 0 5rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(6, 214, 160, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-container {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .open {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid var(--hs-turquoise);
+    color: var(--hs-turquoise);
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-family: var(--hs-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0 0 1.5rem;
+  }
+
+  .dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--hs-turquoise);
+  }
+
+  .hero-title {
+    font-family: var(--hs-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+  }
+
+  .highlight {
+    color: var(--hs-purple);
+  }
+
+  .role {
+    font-family: var(--hs-display);
+    font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--hs-turquoise);
+    margin: 0 0 1.5rem;
+  }
+
+  .lead {
+    font-family: var(--hs-body);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.75;
+    color: var(--hs-text);
+    max-width: 760px;
+    margin: 0;
+  }
+
+  .portrait {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    justify-self: center;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--hs-turquoise), var(--hs-purple));
+  }
+
+  .portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 860px) {
+    .hero-section { padding: 4rem 0; }
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 0 1.25rem;
+    }
+    .portrait {
+      max-width: 280px;
+      order: -1;
+    }
+  }
+
+  /* ============================================
+     Case studyt (CaseStudies)
+     ============================================ */
+  .cases-section {
+    --cs-bg: #0a0a0f;
+    --cs-surface: #13131a;
+    --cs-text: #e8e8ee;
+    --cs-muted: #9d9daa;
+    --cs-turquoise: #06d6a0;
+    --cs-display: 'Space Mono', monospace;
+    --cs-body: 'JetBrains Mono', monospace;
+
+    padding: 6rem 0;
+    background: var(--cs-bg);
+    color: var(--cs-text);
+    scroll-margin-top: 1rem;
+  }
+
+  .cs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .cs-title {
+    font-family: var(--cs-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin: 0 0 4rem;
+    color: var(--cs-text);
+  }
+
+  @media (max-width: 480px) {
+    .cs-container { padding: 0 1.25rem; }
+  }
+
+  .case-cards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 2rem;
+  }
+
+  .case-card {
+    position: relative;
+    height: 100%;
+    background: var(--cs-surface);
+    border: 1px solid rgba(6, 214, 160, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .case-card:hover,
+  .case-card:focus-within {
+    border-color: var(--cs-turquoise);
+  }
+
+  .case-card img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .case-card-body {
+    padding: 2rem;
+  }
+
+  .case-card-body .case-card-tag {
+    font-family: var(--cs-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cs-turquoise);
+    margin-bottom: 0.5rem;
+  }
+
+  .case-card h3 {
+    font-family: var(--cs-display);
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .case-card-link {
+    color: var(--cs-text);
+    text-decoration: none;
+  }
+
+  /* Koko kortti klikattava, linkki on silti otsikossa */
+  .case-card-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .case-card-link:focus-visible {
+    outline: none;
+  }
+
+  .case-card:has(.case-card-link:focus-visible) {
+    outline: 2px solid var(--cs-turquoise);
+    outline-offset: 4px;
+  }
+
+  .case-card-body p {
+    font-family: var(--cs-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--cs-muted);
+  }
+
+  .case-card-body .case-card-more {
+    margin-top: 1rem;
+    color: var(--cs-turquoise);
+    font-weight: 600;
+  }
+
+  .case-card-body p { margin: 0; }
+  .case-card-body .case-card-tag { margin-bottom: 0.5rem; }
+  .case-card-body .case-card-more { margin-top: 1rem; }
+
+  /* ============================================
+     Opinnot (Courses)
+     ============================================ */
+  .courses-section {
+    --co-bg: #0a0a0f;
+    --co-surface: #13131a;
+    --co-text: #e8e8ee;
+    --co-muted: #9d9daa;
+    --co-turquoise: #06d6a0;
+    --co-display: 'Space Mono', monospace;
+    --co-body: 'JetBrains Mono', monospace;
+
+    background: var(--co-bg);
+    color: var(--co-text);
+    padding: 0 0 6rem;
+  }
+
+  .co-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .co-title {
+    font-family: var(--co-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin: 0 0 4rem;
+  }
+
+  .co-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .co-card {
+    background: var(--co-surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  .co-card h3 {
+    font-family: var(--co-display);
+    font-size: 1.35rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .co-sub {
+    font-family: var(--co-body);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--co-muted);
+    margin: 0 0 1.5rem;
+  }
+
+  .co-group + .co-group {
+    margin-top: 1.5rem;
+  }
+
+  .co-group h4 {
+    font-family: var(--co-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--co-turquoise);
+    margin: 0 0 0.5rem;
+  }
+
+  .co-group ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .co-group li {
+    font-family: var(--co-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--co-text);
+    margin-bottom: 0.4rem;
+  }
+
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 480px) {
+    .co-container { padding: 0 1.25rem; }
+    .co-card { padding: 1.5rem; }
   }
 </style>

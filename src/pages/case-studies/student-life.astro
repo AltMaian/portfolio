@@ -183,16 +183,16 @@ const decisions = [
             <h3>Yhteiset johtopäätökset</h3>
             <div class="feature-grid">
               <div class="feature-card">
-                <h4>Kestävyys riippuu hinnasta</h4>
-                <p>Kestävä valinta tehdään, jos siihen on varaa.</p>
+                <h4>Vastuullinen valinta riippuu hinnasta</h4>
+                <p>Opiskelijat haluavat tehdä vastuullisia valintoja, mutta vain jos niihin on rahaa</p>
               </div>
               <div class="feature-card">
                 <h4>Raha rajoittaa osallistumista</h4>
-                <p>Talous vaikuttaa siihen, kuka pääsee mukaan opiskelijaelämään.</p>
+                <p>Taloustilanne vaikuttaa siihen, kuka pääsee mukaan opiskelijaelämään.</p>
               </div>
               <div class="feature-card">
                 <h4>Resurssit muokkaavat prioriteetteja</h4>
-                <p>Se, mitä on käytettävissä, ratkaisee, mikä on tärkeää.</p>
+                <p>Käytettävissä oleva raha ja aika ratkaisevat, mikä tuntuu tärkeältä.</p>
               </div>
             </div>
           </section>
@@ -203,12 +203,12 @@ const decisions = [
               Tutkimuksen perusteella konseptimme kasvoi kolmeen yhtä vahvaan osaan:
             </p>
             <ul>
-              <li><strong>Smart Shopping:</strong> arjen ostokset, hintojen vertailu ja kestävät vaihtoehdot.</li>
+              <li><strong>Smart Shopping:</strong> arjen ostokset, hintojen vertailu ja vastuulliset vaihtoehdot.</li>
               <li><strong>Budget:</strong> tulojen, menojen ja kilpailevien prioriteettien hahmottaminen.</li>
               <li><strong>Student Life:</strong> matalan kynnyksen osallistuminen tapahtumiin, kun kokonaishinta näkyy heti.</li>
             </ul>
             <figure class="wide wide-full">
-              <img src={img('concept-map.png')} alt="Concept map, jonka ylimpänä on Student Prioritization Under Financial Constraints ja sen alla Financial Trade-Offs. Siitä haarautuu kolme pääteemaa. Financial Context: tulot määrittävät ja välttämättömät menot rajoittavat taloudellista joustavuutta. Shopping Decisions: hintatietoisuus tukee edullisuutta, edullisuus vaikuttaa kestävyyteen ja vaihtoehtoinen kulutus tukee kestävyyttä. Student Life: mahdollisuuksiin pääsy ja sosiaalinen osallistuminen tukevat opiskelijan hyvinvointia. Taloudellinen joustavuus vaikuttaa edullisuuteen ja mahdollistaa pääsyn mahdollisuuksiin." loading="lazy" width="1800" height="1039" />
+              <img src={img('concept-map.png')} alt="Concept map, jonka ylimpänä on Student Prioritization Under Financial Constraints ja sen alla Financial Trade-Offs. Siitä haarautuu kolme pääteemaa. Financial Context: tulot määrittävät ja välttämättömät menot rajoittavat taloudellista joustavuutta. Shopping Decisions: hintatietoisuus tukee edullisuutta, edullisuus vaikuttaa vastuullisuuteen ja vaihtoehtoinen kulutus tukee kestävyyttä. Student Life: mahdollisuuksiin pääsy ja sosiaalinen osallistuminen tukevat opiskelijan hyvinvointia. Taloudellinen joustavuus vaikuttaa edullisuuteen ja mahdollistaa pääsyn mahdollisuuksiin." loading="lazy" width="1800" height="1039" />
               <figcaption>Tekemäni concept map: miten taloudelliset valinnat kytkeytyvät ostoksiin, opiskelijaelämään ja hyvinvointiin.</figcaption>
             </figure>
             <p>
@@ -259,6 +259,55 @@ const decisions = [
             ))}
           </section>
 
+          <section class="section" aria-labelledby="testisuunnitelma">
+            <h2 id="testisuunnitelma">Seuraava askel: käytettävyystestin suunnitelma</h2>
+            <p class="plan-note">Tämä on suunnitelma. Testiä ei ole vielä toteutettu.</p>
+
+            <div class="plan">
+              <h3>Tavoite</h3>
+              <p>
+                Selvittää, ymmärtävätkö käyttäjät, miten Student Life -osion ominaisuudet toimivat, ja miten he kokevat ne. Erityisesti haluan tietää, näkyykö kokonaishinta tarpeeksi selvästi ja madaltaako pienryhmä kynnystä lähteä mukaan.
+              </p>
+
+              <h3>Testaajat</h3>
+              <p>
+                Viisi yliopisto-opiskelijaa eri elämäntilanteista. Student Life -osion testaajiksi valitaan opiskelijoita, joille sosiaalinen elämä ja opiskelijatapahtumat ovat tärkeä osa arkea.
+              </p>
+
+              <h3>Menetelmä</h3>
+              <p>
+                Moderoitu ja puolistrukturoitu käytettävyystesti luonnollisessa ympäristössä. Testaaja käyttää prototyyppiä melko vapaasti ja ajattelee ääneen. Minä seuraan ja kuuntelen, mutta en auta.
+              </p>
+              <p>
+                Ennen testiä kerron lyhyesti, mikä sovellus on ja missä tilanteessa sitä käytettäisiin. Tämän opin <a href="/case-studies/itsepalvelukassa">maksupäätteen testistä</a>, jossa käyttäjä ei aluksi hahmottanut, mistä laitteesta oli kyse. Testin jälkeen pidetään lyhyt haastattelu.
+              </p>
+
+              <h3>Tehtävät</h3>
+              <ol>
+                <li>”Haluaisit tehdä jotain kivaa tällä viikolla, mutta rahaa on vähän. Etsi tapahtuma, johon sinulla on varaa.”</li>
+                <li>”Ilmoittaudu tapahtumaan ja päätä, menetkö sinne yksin vai muiden kanssa.”</li>
+                <li>”Tallenna muistiin kiinnostavia tapahtumia, joihin et vielä kuitenkaan osallistu.”</li>
+                <li>”Löydä tapahtumat, jotka olet tallentanut tai joihin olet ilmoittautunut.”</li>
+                <li>”Etsi tämän viikon ilmainen tapahtuma.” Tällä viikolla ilmaisia tapahtumia ei ole, joten tehtävä testaa tyhjää tilaa.</li>
+              </ol>
+
+              <h3>Mitä havainnoidaan</h3>
+              <ul>
+                <li>Onnistuuko tehtävä, ja missä kohdassa testaaja epäröi.</li>
+                <li>Kuinka helpoksi osallistuminen koetaan.</li>
+                <li>Miten testaaja reagoi, kun ilmaisia tapahtumia ei ole ja sovellus ehdottaa esimerkiksi 3 euron tapahtumaa tai kertoo, että seuraava ilmainen tapahtuma on ensi viikolla.</li>
+                <li>Tyytyväisyys sovellukseen.</li>
+                <li>Millaisia tunteita sovellus herättää.</li>
+                <li>Mitä testaaja haluaisi lisätä tai muuttaa.</li>
+              </ul>
+
+              <h3>Tulosten jälkeen</h3>
+              <p>
+                Havainnot analysoidaan ja järjestetään vakavuuden mukaan. Prototyyppiin tehdään tarvittavat muutokset, ja korjattu versio testataan viidellä uudella käyttäjällä. Kierroksia toistetaan, kunnes isoja ongelmia ei enää löydy.
+              </p>
+            </div>
+          </section>
+
           <section class="section" aria-labelledby="opit">
             <h2 id="opit">Mitä opin</h2>
             <div class="learnings-box">
@@ -274,7 +323,7 @@ const decisions = [
               </ul>
               <h3>Seuraavaksi</h3>
               <ul>
-                <li>Käytettävyystestaisin rautalankamallit, jotta näkisin, ymmärsimmekö käyttäjien tarpeet oikein ja priorisoimmeko oikeita asioita. Erityisesti pienryhmäominaisuus pitää testata.</li>
+                <li>Toteuttaisin yllä kuvatun käytettävyystestin, jotta näkisin, ymmärsimmekö käyttäjien tarpeet oikein ja priorisoimmeko oikeita asioita.</li>
               </ul>
             </div>
           </section>
@@ -965,5 +1014,34 @@ const decisions = [
   @media (max-width: 600px) {
     .screen { grid-template-columns: 1fr; }
     .screen img { max-width: 240px; }
+  }
+
+  .section .plan-note {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    border: 1px solid var(--color-accent-turquoise);
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .plan {
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+
+  .plan h3 {
+    color: var(--color-accent-turquoise);
+  }
+
+  .plan h3:first-child {
+    margin-top: 0;
+  }
+
+  .plan a {
+    color: var(--color-accent-turquoise);
   }
 </style>

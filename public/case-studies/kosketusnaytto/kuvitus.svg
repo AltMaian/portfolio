@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" aria-hidden="true">
+  <rect width="400" height="240" fill="#F8C8F0"/>
+  <circle cx="350" cy="200" r="70" fill="#A9D8FF" opacity=".6"/>
+  <rect x="70" y="30" width="260" height="160" rx="10" fill="#1A1633"/>
+  <rect x="80" y="40" width="240" height="140" rx="5" fill="#9D76F6"/>
+  <rect x="140" y="58" width="120" height="66" rx="5" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <g fill="#fff"><circle cx="100" cy="91" r="12"/><circle cx="300" cy="91" r="12"/></g>
+  <g fill="none" stroke="#1A1633" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M103 84l-6 7 6 7"/><path d="M297 84l6 7-6 7"/></g>
+  <g fill="#fff"><rect x="96" y="144" width="48" height="24" rx="3"/><rect x="152" y="144" width="48" height="24" rx="3"/><rect x="208" y="144" width="48" height="24" rx="3"/><circle cx="282" cy="156" r="13"/></g>
+  <path d="M190 190h20v34h-20z" fill="#1A1633"/>
+  <g transform="translate(58 146)" stroke="#1A1633" stroke-width="3" stroke-linejoin="round">
+    <path d="M6 44c0-22 14-36 32-36s32 14 32 36z" fill="#FFD866"/>
+    <path d="M0 44h76v10H0z" fill="#FFD866"/>
+    <path d="M38 8v20" fill="none"/>
+  </g>
+</svg>

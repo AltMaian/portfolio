@@ -13,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
             Tietoja <span class="highlight">minusta</span>
           </h1>
           <p class="lead">
-            UI / Frontend Developer, 15 vuotta IT-alalla. Erikoistun saavutettavaan suunnitteluun ja ohjelmistokehitykseen. Opiskelen tietojenkäsittelytieteiden maisteriksi (Human-Technology Interaction) Tampereen yliopistossa.
+            UI/UX suunnittelija, 15 vuotta IT-alalla. Erikoistun saavutettavaan suunnitteluun ja ihmislähtöiseen kehitykseen. Opiskelen tietojenkäsittelytieteiden maisteriksi (Human-Technology Interaction) Tampereen yliopistossa.
           </p>
         </div>
       </div>
@@ -78,11 +78,12 @@ import Layout from '../layouts/Layout.astro';
         
         <div class="skills-content">
           <div class="skill-category">
-            <h3>Design</h3>
+            <h3>Suunnittelu</h3>
             <ul>
               <li>UI/UX-suunnittelu</li>
-              <li>WCAG</li>
-              <li>Käyttäjätutkimus</li>
+              <li>Käyttäjätutkimus ja käytettävyystestaus</li>
+              <li>Saavutettavuus (WCAG AA)</li>
+              <li>Responsiivinen suunnittelu</li>
               <li>Figma</li>
             </ul>
           </div>
@@ -91,31 +92,21 @@ import Layout from '../layouts/Layout.astro';
             <h3>Kehitys</h3>
             <ul>
               <li>HTML, CSS, JavaScript</li>
-              <li>React, Astro</li>
-              <li>TypeScript</li>
-              <li>Dart</li>
-              <li>Flutter</li>
-              <li>ASP.NET Razor/MVC</li>
-              <li>ASP.NET Web API</li>
-              <li>C#</li>
-              <li>Git / GitHub</li>
-              <li>Responsive Design</li>
-              <li>MSSQL</li>
-              <li>PHP</li>
+              <li>TypeScript, React, Astro</li>
+              <li>Flutter ja Dart</li>
+              <li>C#, ASP.NET Razor/MVC ja Web API</li>
+              <li>MSSQL, PHP</li>
             </ul>
           </div>
 
           <div class="skill-category">
-            <h3>Työkalut</h3>
+            <h3>Työkalut ja testaus</h3>
             <ul>
-              <li>VS Code</li>
-              <li>Vercel</li>
-              <li>Screen reader -testaus</li>
-              <li>Browser DevTools</li>
-              <li>Git</li>
-              <li>Docker</li>
+              <li>Git ja GitHub</li>
+              <li>VS Code, Vercel, Docker</li>
+              <li>Ruudunlukijat: VoiceOver, TalkBack</li>
+              <li>Selaimen kehitystyökalut</li>
               <li>GitHub Copilot, Claude Code</li>
-
             </ul>
           </div>
         </div>
@@ -306,13 +297,7 @@ import Layout from '../layouts/Layout.astro';
     background: var(--color-bg-secondary);
     padding: var(--spacing-md);
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    transition: all 0.3s ease;
-  }
-
-  .value-card:hover {
-    border-color: rgba(6, 214, 160, 0.3);
-    transform: translateY(-4px);
+    border: 1px solid rgba(6, 214, 160, 0.3);
   }
 
   .value-icon {

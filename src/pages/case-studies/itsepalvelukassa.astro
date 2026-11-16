@@ -7,7 +7,7 @@ const img = (name: string) => `/case-studies/itsepalvelukassa/${name}`;
 const caseStudy = {
   title: 'Opiskelijaravintolan maksupäätteen uudelleen\u00ADsuunnittelu',
   subtitle:
-    'Analysoin olemassa olevan itsepalvelukassan kognitiivisen psykologian avulla ja suunnittelin sen uudelleen paperiprototyypiksi.',
+    'Miten lounaan maksamisesta saa selkeää, kun jonossa on kiire? Analysoin olemassa olevan itsepalvelukassan kognitiivisen psykologian avulla ja suunnittelin sen uudelleen paperiprototyypiksi.',
   date: 'Syksy 2026',
   category: 'Käyttöliittymäsuunnittelu',
   tags: ['Kognitiivinen psykologia', 'Gestalt-periaatteet', 'Paperiprototyyppi', 'Käyttäjätestaus'],
@@ -102,7 +102,7 @@ const proto = [
             <div><dt>Tiimi</dt><dd>Yksin</dd></div>
             <div><dt>Konteksti</dt><dd>Psychology in Human-Technology Interaction, Tampereen yliopisto</dd></div>
             <div><dt>Menetelmät</dt><dd>Kognitiivisen psykologian analyysi, Crazy 8, paperiprototyyppi, käyttäjätesti</dd></div>
-            <div><dt>Työkalut</dt><dd>Paperi, sakset ja kynä</dd></div>
+            <div><dt>Työkalut</dt><dd>Paperi, sakset ja kynä, Figma</dd></div>
           </dl>
         </div>
       </div>
@@ -223,7 +223,7 @@ const proto = [
           <section class="section" aria-labelledby="testaus">
             <h2 id="testaus">Testaus</h2>
             <p>
-              Testasin prototyypin yhdellä käyttäjällä. Käyttäjä kävi läpi koko kulun aloituksesta maksun vahvistukseen, ja minä vaihdoin näkymiä hänen valintojensa mukaan.
+              Testasin prototyypin yhdellä käyttäjällä. Käyttäjä kävi läpi koko kulun aloituksesta maksun vahvistukseen, ja minä vaihdoin näkymiä hänen valintojensa mukaan. Testitilanteessa prototyyppi oli pöydällä, ja juuri se osoittautui ongelmaksi.
             </p>
 
             <h3>Mitä testissä selvisi</h3>
@@ -232,6 +232,51 @@ const proto = [
               <li><strong>Konteksti puuttui.</strong> Käyttäjä ei aluksi hahmottanut, mikä laite oli kyseessä ja mitä pitäisi tehdä. Oikea kassa on pystyssä oleva näyttö, mutta prototyyppi makasi pöydällä.</li>
               <li><strong>Aloituskuva oli liian iso.</strong> Aloitusnäkymän ohjekuvan pitäisi olla pienempi tai havainnollisempi.</li>
             </ul>
+          </section>
+
+          <section class="section" aria-labelledby="iterointi">
+            <h2 id="iterointi">Iterointi: digitaalinen versio</h2>
+            <p>
+              Testin jälkeen vein näkymät digitaalisiksi rautalankamalleiksi ja korjasin ne havaintojen perusteella.
+            </p>
+            <h3>Mitä muutin testin jälkeen</h3>
+            <ul>
+              <li><strong>Selkeä otsikko ja ohje:</strong> aloitusnäkymä kertoo heti, mikä laite on ja mitä tehdään: ”Osta opiskelijalounas. Aloita näyttämällä opiskelijakorttisi QR-koodi lukijalle.”</li>
+              <li><strong>Pienempi ohjekuva:</strong> iso kuva vaihtui pieneen puhelimeen, jonka näytöllä on QR-koodi, ja nuoli osoittaa suoraan lukijaan.</li>
+              <li><strong>Vaihepalkki:</strong> Tunnistaudu, Valitse ja Maksa näkyvät jokaisessa näkymässä, joten käyttäjä tietää koko ajan, missä vaiheessa hän on ja paljonko on jäljellä.</li>
+              <li><strong>Ei opiskelijakorttia -vaihtoehto toissijaisena:</strong> alkuperäisessä kassassa iso vihreä painike vei huomion ohjeelta. Nyt vaihtoehto on olemassa, mutta pienenä tekstilinkkinä alareunassa.</li>
+            </ul>
+
+           <ul class="gallery gallery-digi" aria-label="Digitaalisen version näkymät">
+              <li>
+                <figure>
+                  <img src={img('digi-1-aloitus.png')} alt="Digitaalinen aloitusnäkymä: ylhäällä vaihepalkki, jossa ensimmäinen vaihe Tunnistaudu on aktiivinen. Otsikko Osta opiskelijalounas ja ohje näyttää QR-koodi lukijalle. Pieni puhelin, jonka näytöllä on QR-koodi, nuoli alas QR-lukijaan ja alareunassa linkki Ei opiskelijakorttia? Osta ilman opiskelija-alennusta." loading="lazy" width="1080" height="1440" />
+                  <figcaption>Aloitus</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src={img('digi-2-valitse-tuotteet.png')} alt="Tuotteiden valinta: vaihepalkissa Valitse aktiivisena, neljä tuotetta hintoineen ruudukossa, Valitut tuotteet -lista Poista-painikkeineen, yhteensä 4,90 euroa ja Maksamaan-painike." loading="lazy" width="1080" height="1440" />
+                  <figcaption>Valitse tuotteet</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src={img('digi-3-tarkista-tilaus.png')} alt="Tilauksen tarkistus: valitut tuotteet ja yhteissumma, painikkeet Muuta tilausta ja Peruuta ostos sekä iso Jatka maksamaan -painike." loading="lazy" width="1080" height="1440" />
+                  <figcaption>Tarkista tilaus</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src={img('digi-4-maksu-onnistui.png')} alt="Vahvistus: vaihepalkissa kaikki kolme vaihetta tehty, iso valintamerkki ja teksti Maksu onnistui, muistutus ottaa kuitti mukaan ja esittää se linjastolla sekä nuoli alas kuittiin." loading="lazy" width="1080" height="1440" />
+                  <figcaption>Maksu onnistui</figcaption>
+                </figure>
+              </li>
+            </ul>
+
+            <p class="ai-note">
+              Digitaaliset näkymät tehtiin tekoälyn avulla paperiprototyypin ja testihavaintojen pohjalta. Suunnitteluratkaisut ja muutokset ovat omiani, ja tarkistin jokaisen näkymän.
+            </p>
           </section>
 
           <section class="section" aria-labelledby="saavutettavuus">
@@ -263,7 +308,7 @@ const proto = [
               </ul>
               <h3>Seuraavaksi</h3>
               <ul>
-                <li>Vien näkymät Figmaan klikattavaksi prototyypiksi ja testaan ne pystyasennossa olevalla näytöllä.</li>
+                <li>Teen digitaalisista näkymistä klikattavan prototyypin ja testaan sen pystyasennossa olevalla näytöllä useammalla käyttäjällä.</li>
               </ul>
             </div>
           </section>
@@ -558,6 +603,11 @@ const proto = [
     margin: 0;
   }
 
+    .section .gallery-digi {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
   /* ============================================
      Results Grid
      ============================================ */
@@ -850,5 +900,34 @@ const proto = [
 
   @media (prefers-reduced-motion: reduce) {
     .feature-card, .feature-card:hover { transition: none; transform: none; }
+  }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    align-items: end;
+    margin: var(--spacing-md) 0;
+  }
+
+  .compare img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .gallery-digi { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+  .section .ai-note {
+    font-size: 0.95rem;
+    border-left: 3px solid var(--color-accent-purple);
+    padding-left: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  @media (max-width: 600px) {
+    .compare { grid-template-columns: 1fr; }
   }
 </style>
